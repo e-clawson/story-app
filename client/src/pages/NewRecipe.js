@@ -25,7 +25,7 @@ function NewRecipe({ user }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("/recipes", {
+    fetch("/api/recipes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

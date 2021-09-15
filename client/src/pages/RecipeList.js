@@ -8,7 +8,7 @@ function RecipeList() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("/recipes")
+    fetch("/api/recipes")
       .then((r) => r.json())
       .then(setRecipes);
   }, []);
@@ -21,7 +21,7 @@ function RecipeList() {
             <Box>
               <h2>{recipe.title}</h2>
               <p>
-                <em>Time to Complete: {recipe.minutesToComplete} minutes</em>
+                <em>Time to Complete: {recipe.minutes_to_complete} minutes</em>
                 &nbsp;·&nbsp;
                 <cite>By {recipe.user.username}</cite>
               </p>
