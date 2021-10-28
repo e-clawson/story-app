@@ -27,7 +27,8 @@ brew tap heroku/brew && brew install heroku
 
 ## Running the App in Development
 
-Configuration for running in development is in the `Procfile.dev` file. Run this command to start the frontend and backend servers:
+Configuration for running in development is in the `Procfile.dev` file. Run this
+command to start the frontend and backend servers:
 
 ```sh
 heroku local -f Procfile.dev
@@ -137,7 +138,7 @@ Second, the `package.json` file in the **root** directory (not the one in the
   "name": "phase-4-deploying-app-demo",
   "description": "Build scripts for Heroku",
   "engines": {
-    "node": ">= 14"
+    "node": "16.x"
   },
   "scripts": {
     "build": "npm install --prefix client && npm run build --prefix client",
