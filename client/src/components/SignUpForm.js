@@ -25,7 +25,7 @@ function SignUpForm({ onLogin }) {
         password_confirmation: passwordConfirmation,
         image_url: imageUrl,
         bio,
-      }),
+      })
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
