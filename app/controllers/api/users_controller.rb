@@ -7,6 +7,10 @@ class Api::UsersController < ApplicationController
     render json: user, status: :created
   end
 
+  def index
+    render json: User.all
+  end
+
   def show
     render json: @current_user
   end
