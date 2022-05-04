@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :prompts
   resources :users
   namespace :api do
     resources :recipes, only: [:index, :create]
