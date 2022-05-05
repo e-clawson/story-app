@@ -11,3 +11,4 @@ caitlin = User.create(username: "CWBakes", first_name: "Caitlin", last_name: "Ba
 laksh = User.create(username: "LakshK3", first_name: "Laksh", last_name: "Khurana", password:"123456", email: "lakshkhurana3@gmail.com")
 aiden = User.create(username: "Pandora's Bra", first_name: "Aiden", last_name: "Baker", password:"123456", email: "aiden@gmail.com")
 
+Prompt.create(prompt_title: "The Mad Scientist"
