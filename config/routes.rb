@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-
   namespace :api do
     resources :recipes, only: [:index, :create]
     post "/signup", to: "users#create"
