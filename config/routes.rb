@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   resources :prompts
-  resources :users
+
+  resources :users, only: [:update, :destroy]
+  post "/signup", to: "users#create"
+  get "/me", to: "users#show"
+
+  
+
   namespace :api do
     resources :recipes, only: [:index, :create]
     post "/signup", to: "users#create"
