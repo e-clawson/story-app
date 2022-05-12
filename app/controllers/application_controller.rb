@@ -3,8 +3,8 @@ class ApplicationController < ActionController::API
   include ActionController::Cookies
   rescue_from ActiveRecord::RecordNotFound, with: :no_route
   rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
-  before_action :authorized!
-  # wrap_parameters format: [] #related to strong params and its ability to build a nested object in params
+  before_action :authorized! #will try to run on every action unless specified
+  wrap_parameters format: [] #related to strong params and its ability to build a nested object in params
 
   private
 
@@ -17,11 +17,11 @@ class ApplicationController < ActionController::API
   end
 
   def invalid_record(invalid)
-    redner json: {error: invalid.record.errors.full_messages.to_sentence}, status: :unprocessable_entity
+    render json: {error: invalid.record.errors.full_messages.to_sentence}, status: :unprocessable_entity
   end
   
   def no_route
-    render json: {error: "Not authorized"}, status: :unauthorized unless session.include?(:user_id)
+    render json: {error: "Not Authorized"}, status: :unauthorized unless session.include?(:user_id) 
   end
 
   # def authorize
