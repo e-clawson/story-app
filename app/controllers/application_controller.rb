@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :no_route
   rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
   before_action :authorized!
-  wrap_parameters format: [] #related to strong params and its ability to build a nested object in params
+  # wrap_parameters format: [] #related to strong params and its ability to build a nested object in params
 
   private
 
