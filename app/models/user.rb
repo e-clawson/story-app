@@ -6,6 +6,5 @@ class User < ApplicationRecord
     # validations
     validates :username, uniqueness: true, presence: true, length: {in: 4..25}
     validates :email, presence: true, uniqueness: true, format: {with: /\A(?<username>[^@\s]+)@((?<domain_name>[-a-z0-9]+)\.(?<domain>[a-z]{2,}))\z/i}
-    validates :age, numericality: {only_integer: true, greater_than: 15}
     validates :password, length: {in: 6..25}
 end
