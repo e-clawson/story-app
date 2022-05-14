@@ -15,7 +15,7 @@ function NavBar({ user, setUser }) {
   return (
     <Wrapper>
       <Logo>
-        <Link to="/">Short Story Prompt App </Link>
+        <Link to="/"> AnthologyApp </Link>
       </Logo>
       <Nav>
         <Button as={Link} to="/new">

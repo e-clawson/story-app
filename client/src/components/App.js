@@ -7,6 +7,11 @@ import {UserContext} from ".context/user";
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
   
+  useEffect(() => {
+    if (!user){
+      getCurrentUser()
+    }
+  }, [user])
 
   useEffect(() => {
     // auto-login

@@ -10,16 +10,70 @@ function UserProvider({children}) {
     const history = useHistory();
     const {setMessage} = useContext(MessageContext)
 
-    const getCurrentUser = async() => {
-        const resp = await fetch(baseUrl + "/me")
-        if (resp.status === 200) {
-            const data = await resp.json()
-            debugger
-        }else {
+    const getCurrentUser = useCallback(async() => {
+        try {  
+            const resp = await fetch(baseUrl + "/me")
+             if (resp.status === 200) {
+                 const data = await resp.json()
+                 debugger
+                 setUser(data)
+             } else {
             const errorObj = await resp.json()
             setMessage(errorObj.error)
+            }
+        } catch (e) {
+            setMessage(e.message)
+        }
+    }, [setMessage])
+
+    const login = async(userInfo) => { 
+        try{
+            const resp = await fetch("" + baseUrl +"/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", 
+                    "Accept": "application/json"
+                }, 
+                body: JSON.stringify(userInfo)
+            })
+            if (resp.status === 202) {
+                const data = await resp.json()
+                setUser(data)
+                history.push("/profile")
+            } else {
+                const errorObj = await resp.json()
+                setMessage(errorObj.error)
+            }
+            
+        } catch(e) {
+            setMessage(e.message)
         }
     }
+
+    const signUp = async(userInfo) => { 
+        try{
+            const resp = await fetch("" + baseUrl +"/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", 
+                    "Accept": "application/json"
+                }, 
+                body: JSON.stringify(userInfo)
+            })
+            if (resp.status === 202) {
+                const data = await resp.json()
+                setUser(data)
+                history.push("/profile")
+            } else {
+                const errorObj = await resp.json()
+                setMessage(errorObj.error)
+            }
+            
+        } catch(e) {
+            setMessage(e.message)
+        }
+    }
+
 
     return (
         <UserContext.Provider value={{user, setUser, 
