@@ -50,9 +50,9 @@ function UserProvider({children}) {
         }
     }
 
-    const signUp = async(userInfo) => { 
+    const signup = async(userInfo) => { 
         try{
-            const resp = await fetch("" + baseUrl +"/login", {
+            const resp = await fetch("" + baseUrl +"/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", 
@@ -60,7 +60,7 @@ function UserProvider({children}) {
                 }, 
                 body: JSON.stringify(userInfo)
             })
-            if (resp.status === 202) {
+            if (resp.status === 201) {
                 const data = await resp.json()
                 setUser(data)
                 history.push("/profile")
@@ -73,6 +73,8 @@ function UserProvider({children}) {
             setMessage(e.message)
         }
     }
+
+    const logout = (second) => { third }
 
 
     return (
