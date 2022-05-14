@@ -74,7 +74,17 @@ function UserProvider({children}) {
         }
     }
 
-    const logout = (second) => { third }
+    const logout = async() => {
+        try {
+            const resp = await fetch("" + baseUrl + "/logout", {
+                method: "DELETE"
+            })
+            setUser(null)
+            history.push("/login")
+        } catch(e) {
+            setMessage(e.message)
+        }
+    }
 
 
     return (
