@@ -8,7 +8,7 @@ const UserContext = React.createContext()
 function UserProvider({children}) {
     const [user, setUser] = useState(null);
     const history = useHistory();
-    const {setMessage} = userContext(MessageContext)
+    const {setMessage} = useContext(MessageContext)
 
     const getCurrentUser = async() => {
         const resp = await fetch(baseUrl + "/me")

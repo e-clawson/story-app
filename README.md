@@ -1,3 +1,18 @@
+# AnthologyApp 
+
+The idea for AnthologyApp came from my own creative process as a musician and artist. I have been trying to get into different forms of creativity and I have recently tried to overcome my fear of writing. I hate writing and I don't feel like a very good writer. When confiding in a writer friend of mine about this issue he suggested I try short stories and so I started writing down every idea I had for a story in my phone notes. I thought it would be a great idea to make an app where users can compile their short story ideas, and see other people's short story ideas as well! 
+gi
+AntholgyApp is a place where users can see a list of short story prompts collected from all of the users of the app. Users can browse these, and can write their own short story as a response to a story prompt, and see other people's responses to that prompt too. Users can also create their own short story prompts to share with the world! 
+
+To view a technical blog post I wrote about the app please follow this link: 
+
+To view a video walkthough of the app, please follow this link: 
+
+
+## Acknowledgements 
+
+A special thank you to Matteo Piccini and Flatiron School for teaching me to code. Thank you to Angel Robiou for helping me overcome my anxiety around writing, and for inspiring me with the idea for this app, and thank you to friends and family that provided short story ideas, and who support me every day. 
+
 # Rails and React Heroku Demo App
 
 This app uses a Rails API and React frontend that can be deployed to a single
