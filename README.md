@@ -13,6 +13,9 @@ To view a video walkthough of the app, please follow this link:
 
 A special thank you to Matteo Piccini and Flatiron School for teaching me to code. Thank you to Angel Robiou for helping me overcome my anxiety around writing, and for inspiring me with the idea for this app, and thank you to friends and family that provided short story ideas, and who support me every day. 
 
+Sign in page courtesy of Mui React templates and can be found here: 
+https://github.com/mui/material-ui/tree/v5.7.0/docs/data/material/getting-started/templates/sign-in 
+
 # Rails and React Heroku Demo App
 
 This app uses a Rails API and React frontend that can be deployed to a single
