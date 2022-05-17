@@ -13,11 +13,16 @@ function NavBar({ user, setUser }) {
   }
 
   return (
-    <Wrapper>
+   <>
       <Logo>
         <Link to="/"> AnthologyApp </Link>
       </Logo>
+      <br/>
+      <Wrapper>
       <Nav>
+        <Button as={Link} to="/about">
+         About
+        </Button>
         <Button as={Link} to="/new">
           New Short Story Prompt
         </Button>
@@ -29,6 +34,7 @@ function NavBar({ user, setUser }) {
         </Button>
       </Nav>
     </Wrapper>
+    </>
   );
 }
 
@@ -41,6 +47,10 @@ const Wrapper = styled.header`
 
 const Logo = styled.h1`
   font-family: "Permanent Marker", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
   font-size: 3rem;
   color: deeppink;
   margin: 0;
@@ -55,7 +65,8 @@ const Logo = styled.h1`
 const Nav = styled.nav`
   display: flex;
   gap: 4px;
-  position: absolute;
+  justify-content: center;
+  align-items: center;
   right: 8px;
 `;
 
