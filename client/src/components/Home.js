@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div> 
       <Wrapper>
-        <h2>Share your short stories with the world!</h2>
+        <h2>Homepage</h2>
       </Wrapper>
     </div>
   )

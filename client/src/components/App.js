@@ -1,10 +1,11 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./NavBar";
-import Login from "../pages/Login";
-import { UserContext } from "../context/user.js";
+import {UserContext, UserProvider} from "/Users/elizabethclawson/Development/code/4/phase-4-deploying-demo-app/client/src/context/user.js";
 import Home from "./Home";
 import About from "./About.js";
+import Header from "./Header.js";
+import Notification from "./Notification.js";
 
 function App() {
   // const {getCurrentUser, user} = useContext(UserContext)
@@ -27,8 +28,13 @@ function App() {
   // if (!user) return <Login onLogin={setUser} />;
 
   return (
-    <>
+    <div className="App">
+      <Router>
+        {/* <Notification/> */}
+      </Router>
       <NavBar />
+
+      <Header slogan="Share your short stories with the world!"/>
       <main>
         <Switch>
           <Route path="/about">
@@ -41,8 +47,10 @@ function App() {
           </Route>
         </Switch>
       </main>
-    </>
+    </div>
   );
 }
+
+
 
 export default App;
