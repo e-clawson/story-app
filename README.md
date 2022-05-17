@@ -1,7 +1,7 @@
 # AnthologyApp 
 
 The idea for AnthologyApp came from my own creative process as a musician and artist. I have been trying to get into different forms of creativity and I have recently tried to overcome my fear of writing. I hate writing and I don't feel like a very good writer. When confiding in a writer friend of mine about this issue he suggested I try short stories and so I started writing down every idea I had for a story in my phone notes. I thought it would be a great idea to make an app where users can compile their short story ideas, and see other people's short story ideas as well! 
-gi
+
 AntholgyApp is a place where users can see a list of short story prompts collected from all of the users of the app. Users can browse these, and can write their own short story as a response to a story prompt, and see other people's responses to that prompt too. Users can also create their own short story prompts to share with the world! 
 
 To view a technical blog post I wrote about the app please follow this link: 

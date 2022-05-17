@@ -21,6 +21,9 @@ function NavBar({ user, setUser }) {
         <Button as={Link} to="/new">
           New Short Story Prompt
         </Button>
+        <Button as={Link} to="/me">
+         My Profile
+        </Button>
         <Button variant="outline" onClick={handleLogoutClick}>
           Logout
         </Button>
