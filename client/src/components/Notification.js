@@ -6,12 +6,12 @@ const Notification = () => {
 
     useEffect(() => {
         const timerId = setTimeout(() => {
-            setMessage(null)
+            setMessage()
         }, 3000);
         return () => {
             clearTimeout(timerId)
         };
-    }, [message, setMessage]);
+    }, [message]);
 
     return (
         <div>
