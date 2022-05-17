@@ -1,12 +1,21 @@
-
+import React from "react";
+import styled from "styled-components";
 
 const Home = () => {
   return (
     <div> 
-    <h1>AnthologyApp!</h1>
-    <h2>Share your short story ideas with the world!</h2>
+      <Wrapper>
+        <h2>Share your short stories with the world!</h2>
+      </Wrapper>
     </div>
   )
 }
+
+const Wrapper = styled.header`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+`;
 
 export default Home

@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { UserContext } from './context/user';
+import { useContext, useState } from 'react';
+
 
 function Copyright(props) {
   return (
@@ -29,13 +32,22 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const {login} = useContext(UserContext);
+  const [userObj, setUserObj] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleChange = ({target: {name, value}}) => {
+    setUserObj({
+        ...userObj,
+        [name]: value
+    })
+}
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    login(userObj)
   };
 
   return (
@@ -65,7 +77,9 @@ export default function SignIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              value={userObj.email}
               autoFocus
+              
             />
             <TextField
               margin="normal"
@@ -74,6 +88,8 @@ export default function SignIn() {
               name="password"
               label="Password"
               type="password"
+              value={userObj.password}
+              onChange={handleChange}
               id="password"
               autoComplete="current-password"
             />
