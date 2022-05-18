@@ -1,7 +1,7 @@
 import {useState, useContext} from 'react'
 import { useHistory } from 'react-router-dom'
-import { UserContext } from "../../context/user.js"
-import { MessageContext } from '../../context/message.js'
+import { UserContext } from "./context/user.js"
+import { MessageContext } from './context/message.js'
 
 const Login = () => {
     const {setUser,login} = useContext(UserContext);

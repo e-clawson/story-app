@@ -16,6 +16,9 @@ A special thank you to Matteo Piccini and Flatiron School for teaching me to cod
 Sign in page courtesy of Mui React templates and can be found here: 
 https://github.com/mui/material-ui/tree/v5.7.0/docs/data/material/getting-started/templates/sign-in 
 
+Additional information about Material UI, including installation, can be found on the website here: 
+https://mui.com/material-ui/getting-started/installation/ 
+
 # Rails and React Heroku Demo App
 
 This app uses a Rails API and React frontend that can be deployed to a single

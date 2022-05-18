@@ -1,34 +1,33 @@
 import React, { useState, useContext, useEffect, useCallback } from "react";
 import {useHistory} from "react-router-dom"
-import {MessageContext} from "../context/message"
+import {MessageContext} from "./message"
 
-const baseUrl = "http://localhost:3000/api/v1"
+// const baseUrl = "http://localhost:3000/api/v1"
 const UserContext = React.createContext()
 
 function UserProvider({children}) {
     const [user, setUser] = useState(null);
-    const history = useHistory();
+    const history =useHistory();
     const {setMessage} = useContext(MessageContext)
 
-    const getCurrentUser = useCallback(async() => {
-        try {  
-            const resp = await fetch(baseUrl + "/me")
-             if (resp.status === 200) {
-                 const data = await resp.json()
-                 debugger
-                 setUser(data)
-             } else {
-            const errorObj = await resp.json()
-            setMessage(errorObj.error)
-            }
-        } catch (e) {
-            setMessage(e.message)
-        }
-    }, [setMessage])
+    // const getCurrentUser = useCallback(async() => {
+    //     try {  
+    //         const resp = await fetch("/api/v1/me")
+    //          if (resp.status === 200) {
+    //              const data = await resp.json()
+    //              setUser({...data.data.attributes})
+    //          } else {
+    //             const errorObj = await resp.json()
+    //             setMessage({message: errorObj.error, color: "red"})
+    //         }
+    //     } catch (e) {
+    //         setMessage({message: e.message, color: "red"})
+    //     }
+    // }, [setMessage])
 
     const login = async(userInfo) => { 
-        try{
-            const resp = await fetch("" + baseUrl +"/login", {
+        try {
+            const resp = await fetch("/api/v1/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", 
@@ -38,21 +37,23 @@ function UserProvider({children}) {
             })
             if (resp.status === 202) {
                 const data = await resp.json()
-                setUser(data)
-                history.push("/profile")
+                setUser({...data.data.attributes})
+                // history.push("/profile")
+                return true
             } else {
                 const errorObj = await resp.json()
-                setMessage(errorObj.error)
+                setMessage({message: errorObj.error, color: "red"})
+                return false
             }
             
         } catch(e) {
-            setMessage(e.message)
+            setMessage({message: e.message, color: "red"})
         }
     }
 
     const signup = async(userInfo) => { 
-        try{
-            const resp = await fetch("" + baseUrl +"/signup", {
+        try {
+            const resp = await fetch("/api/v1/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", 
@@ -76,20 +77,21 @@ function UserProvider({children}) {
 
     const logout = async() => {
         try {
-            const resp = await fetch("" + baseUrl + "/logout", {
+            const resp = await fetch("/api/v1/logout", {
                 method: "DELETE"
             })
+            setMessage({message: "You have successfully logged out", color: "green"})
             setUser(null)
-            history.push("/login")
+            return true 
         } catch(e) {
-            setMessage(e.message)
+            setMessage({message: e.message, color: "red"})
+            return false
         }
     }
 
 
     return (
-        <UserContext.Provider value={{user, setUser, 
-        getCurrentUser}}>
+        <UserContext.Provider value={{user, setUser, login, signup, logout}}>
             {children}
         </UserContext.Provider>
     )

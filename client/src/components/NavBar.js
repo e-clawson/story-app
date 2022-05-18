@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles";
-import {UserContext} from "../context/user";
-import {useContext} from "react";
+import { UserContext } from "./context/user";
+import { useContext } from "react";
 
 function NavBar() {
   const {user, setUser} = useContext(UserContext)
@@ -35,8 +35,8 @@ function NavBar() {
           <Button as={Link} to="/new">
             New Short Story Prompt
           </Button>
-          <Button as={Link} to="/me">
-          My Profile
+          <Button as={Link} to="/profile">
+            My Profile
           </Button>
           <Button variant="outline" onClick={handleLogoutClick}>
             Logout

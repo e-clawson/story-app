@@ -1,21 +1,23 @@
-import { MessageContext } from "../context/message";
-import { useContext, useEffect } from "react";
+import { MessageContext } from "./context/message";
+import { useContext, useEffect, useState } from "react";
 
 const Notification = () => {
-    const {message, setMessage} = useContext(MessageContext);
+    const [vanishMode, setVanishMode] = useState(false);
+    const {message} = useContext(MessageContext);
 
     useEffect(() => {
-        const timerId = setTimeout(() => {
-            setMessage()
-        }, 3000);
+        const timer = setTimeout(() => {
+            setVanishMode(true)
+        }, 5000);
         return () => {
-            clearTimeout(timerId)
+            clearTimeout(timer)
+            setVanishMode(false)
         };
     }, [message]);
 
     return (
         <div>
-            <p className={message?.status}>{message.status}</p>
+           {/* {!vanishMode ? <p style={{fontSize: "bold", backgroundColor: message?.color}}>{message?.message}</p> : null} */}
         </div>
     )
 }
