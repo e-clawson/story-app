@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import PromptContainer from "../containers/PromptContainer";
 
 const Home = () => {
   return (
     <div> 
       <Wrapper>
         <h2>Homepage</h2>
+        <br/>
+        <PromptContainer/>
       </Wrapper>
     </div>
   )

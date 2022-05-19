@@ -1,6 +1,6 @@
 import "./Prompt.css"
 
-export const PromptCard = ({prompt}) => {
+const PromptCard = ({prompt}) => {
 
     return (
         <div className= "prompt-card">
@@ -10,3 +10,5 @@ export const PromptCard = ({prompt}) => {
         </div>
     )
 }
+
+export default PromptCard

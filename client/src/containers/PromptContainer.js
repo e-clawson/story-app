@@ -4,27 +4,13 @@ import { PromptFilter } from "../components/Prompts/PromptFilter";
 
 const PromptContainer = () => {
     const [prompts, setPrompts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    // const [filteredMusic, setFilteredMusic] = useState(musics)
-    // const [MyListView, setMyListView] = useState(false)
-    // const [favoriteMusic, setFavoriteMusic] = useState(musics)
 
     useEffect(() => {
-        const fetchData = async () => {
-            try{
-                const resp = await fetch("http://localhost:3000/api/v1/prompts")
-                const data = await resp.json()
-
-                setPrompts(data)
-                setLoading(false)
-            } catch (error) {
-                alert(error)
-            }
-        }
-    
-        fetchData()
+        fetch("/api/v1/prompts")
+        .then(r => r.json())
+        .then(data => setPrompts(data.data.map(p => p.attributes)))
+        .catch(err => alert(err))  
     }, []);
-    if (!!loading) return <h1> Loading...</h1>
 
   return (
     <>
