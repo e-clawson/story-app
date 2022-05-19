@@ -8,7 +8,8 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
       
-      # resources :prompts
+      resources :prompts do 
+
       # resources :stories
     end
   end
