@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-    
+    #associations 
+
     #password protection 
     has_secure_password
 

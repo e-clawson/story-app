@@ -4,7 +4,7 @@ import { UserContext } from "./context/user.js"
 import { MessageContext } from './context/message.js'
 
 const Login = () => {
-    const {setUser,login} = useContext(UserContext);
+    const {setUser, login} = useContext(UserContext);
     const {setMessage} = useContext(MessageContext); 
 
     const [userObj, setUserObj] = useState({
@@ -24,10 +24,9 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if  ([userObj.email, userObj.password].some(val => val.trim() === "")){
-            alert ("Please provide an email and password")
+            setMessage ("Please provide an email and password")
         }
         login(userObj)
-        
     }
   return (
     <>

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles";
 import { UserContext } from "./context/user";
-import { useContext } from "react";
+
 
 function NavBar() {
   const {user, setUser} = useContext(UserContext)
@@ -44,7 +44,7 @@ function NavBar() {
           </>
           ) : (
             <>
-            <Button as={Link} to="/me">
+            <Button as={Link} to="/login">
             Login or Signup
             </Button>
             </>

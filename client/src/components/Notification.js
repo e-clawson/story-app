@@ -8,7 +8,7 @@ const Notification = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setVanishMode(true)
-        }, 5000);
+        }, 5000)
         return () => {
             clearTimeout(timer)
             setVanishMode(false)
@@ -17,9 +17,9 @@ const Notification = () => {
 
     return (
         <div>
-           {/* {!vanishMode ? <p style={{fontSize: "bold", backgroundColor: message?.color}}>{message?.message}</p> : null} */}
+           {!vanishMode ? <p style={{fontSize: "bold", backgroundColor: message?.color}}>{message?.message}</p> : null}
         </div>
     )
 }
 
-export default Notification;
+export default Notification

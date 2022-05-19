@@ -6,16 +6,18 @@ import NavBar from "./NavBar";
 import {UserContext} from "./context/user.js";
 import About from "./About.js";
 import Notification from "./Notification.js";
-import Login2 from "./Login2.js";
+import Login from "./Login.js";
 import Logout from "./Logout";
 import Profile from "./Profile";
 
 function App() {
-  // const {getCurrentUser} = useContext(UserContext)
+  const {getCurrentUser, user} = useContext(UserContext)
   
-  // useEffect(() => {
-  //     getCurrentUser()
-  // }, [])
+  useEffect(() => {
+      if (!user) {
+        getCurrentUser()
+      }
+  }, [])
 
   return (
     <div className="App">
@@ -28,13 +30,13 @@ function App() {
               <About /> 
             </Route>
             <Route path="/login">
-             {/* <Login2 />  */}
+             <Login /> 
             </Route>
             <Route path="/logout">
-              {/* <Logout />  */}
+              <Logout /> 
             </Route>
             <Route path="/profile">
-              {/* <Profile />  */}
+              <Profile /> 
             </Route>
             <Route path="/new">
             </Route>
