@@ -12,7 +12,7 @@ const PromptContainer = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const resp = await fetch("/prompts")
+                const resp = await fetch("http://localhost:3000/api/v1/prompts")
                 const data = await resp.json()
 
                 setPrompts(data)
@@ -29,11 +29,10 @@ const PromptContainer = () => {
   return (
     <>
         <h2>Prompt List</h2>
-        {/* <MusicFilter handleSearch={handleSearch}/> */}
         <PromptList prompts={prompts} />
     </>
 
   )
 }
 
-export default MusicContainer;
+export default PromptContainer;

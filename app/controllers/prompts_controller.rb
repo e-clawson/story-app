@@ -3,8 +3,8 @@ class PromptsController < ApplicationController
     before_action :find_post, only: [:show, :update, :destroy]
 
     def index #get "/prompts"
-        binding.pry 
-        render json: PromptSerializer.new.serializable_hash
+        prompts = Prompt.all
+        render json: PromptSerializer.new(prompts), status: :ok
     end
 
     def ordered 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope :api do
     scope :v1 do
-      get "/ordered-prompts", to: "prompts#ordered"
+      get "/prompts", to: "prompts#index"
 
       resources :users, only: [:update, :destroy]
       post "/signup", to: "users#create"
@@ -9,9 +9,6 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
       
-      resources :prompts do 
-      end
-
       # resources :stories
     end
   end
