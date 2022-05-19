@@ -4,7 +4,7 @@ class PromptsController < ApplicationController
 
     def index #get "/prompts"
         binding.pry 
-        render json: PromptSerializer.new(Prompt.preload(:stories)).serializable_hash
+        render json: PromptSerializer.new.serializable_hash
     end
 
     def ordered 
