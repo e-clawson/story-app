@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_04_225239) do
+ActiveRecord::Schema.define(version: 2022_05_19_234418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 2022_05_04_225239) do
     t.string "prompt_body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.bigint "prompt_id", null: false
+    t.bigint "user_id", null: false
+    t.string "story_title"
+    t.string "story_body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prompt_id"], name: "index_stories_on_prompt_id"
+    t.index ["user_id"], name: "index_stories_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,4 +43,6 @@ ActiveRecord::Schema.define(version: 2022_05_04_225239) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "stories", "prompts"
+  add_foreign_key "stories", "users"
 end

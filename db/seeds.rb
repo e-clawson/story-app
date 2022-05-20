@@ -19,3 +19,5 @@ p5 = Prompt.create(prompt_title: "Cross-Culture", prompt_body: "A long distance 
 p6 = Prompt.create(prompt_title: "AI Love You", prompt_body: "Two forms of sentient AI fall in love.")
 p7 = Prompt.create(prompt_title: "Spiders", prompt_body: "A day in your house from a spider's point of view")
 p8 = Prompt.create(prompt_title: "Besties", prompt_body: "The grim reaper becomes best friends with an elderly woman whose soul was supposed to be collected.")
+
+s1 = Story.create(story_title: "A Close Encounter", story_body:";kdjnclidulfiuvbiuxdlniufcrhgoniupvxiohpnoiehfnpew", prompt_id: 7, user_id: 3)

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stories
   scope :api do
     scope :v1 do
       get "/prompts", to: "prompts#index"

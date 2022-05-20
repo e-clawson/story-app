@@ -7,9 +7,10 @@ const Home = () => {
     <div> 
       <Wrapper>
         <h2>Homepage</h2>
-        <br/>
-        <PromptContainer/>
       </Wrapper>
+      <PromptContainer/>
+  
+      
     </div>
   )
 }
