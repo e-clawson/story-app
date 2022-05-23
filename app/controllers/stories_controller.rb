@@ -1,11 +1,11 @@
 class StoriesController < ApplicationController
     skip_before_action :authorized!, only: [:index]
-    before_action :find_prompt, only: [:show, :update, :destroy]
+    before_action :find_story, only: [:show, :update, :destroy]
 
     def index #get "/stories" get "prompt/:prompt_id/stories"
         if params[:prompt_id] #is there a route parameter? AKA do I come from a nested route?
             prompt = Prompt.find(params[:prompt_id])
-            render json: prompt.story
+            render json: prompt.stories
         else # get "/comments"
             render json: StorySerializer.new(Story.all).serializable_hash
         end
@@ -29,12 +29,12 @@ class StoriesController < ApplicationController
     def update #patch "/stories/:id"
         if @story&.update(story_params)
             render json: serialized_story
-        else
-            no_route
-        end
         # else
-        #     render json: {error: @post.errors.full_messages.to_sentence}
+        #     no_route
         # end
+        else
+            render json: {error: @post.errors.full_messages.to_sentence}
+        end
     end
 
     def destroy #delete "/stories/:id"
@@ -60,7 +60,4 @@ class StoriesController < ApplicationController
         def story_params
             params.require(:story).permit(:story_title, :story_body, :user_id, :prompt_id)
         end
-
-    end
-
 end
