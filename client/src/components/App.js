@@ -38,7 +38,7 @@ function App() {
               {/* <Logout />  */}
             </Route>
             <Route path="/profile">
-              {/* <Profile />  */}
+              <Profile /> 
             </Route>
             <Route path="/signup">
               <Signup2 />

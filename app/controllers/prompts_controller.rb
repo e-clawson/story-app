@@ -3,7 +3,6 @@ class PromptsController < ApplicationController
     before_action :find_prompt, only: [:show, :update, :destroy]
 
     def index #get "/posts"
-        binding.pry
         render json: PromptSerializer.new(Prompt.preload(:stories)).serializable_hash
     end
 

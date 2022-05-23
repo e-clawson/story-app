@@ -29,9 +29,9 @@ const NavBar = () => {
             <Button as={Link} to="/profile">
               My Profile
             </Button>
-            {/* <Button variant="outline" onClick={handleLogoutClick}>
+            <Button as={Link} to="/logout">
               Logout
-            </Button> */}
+            </Button>
           </>
           ) : (
             <>
