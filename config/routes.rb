@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :stories
   scope :api do
     scope :v1 do
       # get "/ordered-prompts", to: "propmts#ordered"
@@ -17,7 +16,7 @@ Rails.application.routes.draw do
 
       resources :prompts do
         # resources :prompts, only: [:index, :create]
-        resources :prompts, shallow: true
+        resources :stories, shallow: true
       end
     end
   end
