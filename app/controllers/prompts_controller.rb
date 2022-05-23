@@ -10,15 +10,17 @@ class PromptsController < ApplicationController
     #     render json: Prompt.all
     # end
 
+    # I don't need these yet but might need them later
+
     # def ordered
     #     render json: Post.sort_desc_by_title
     # end
 
-    def most_comments
-        render json: Prompt.most_comments
-    end
+    # def most_stories
+    #     render json: Prompt.most_stories
+    # end
 
-    def show #get "/propmts/:id"
+    def show #get "/prompts/:id"
         render json: serialized_prompt
     end
 
@@ -33,22 +35,24 @@ class PromptsController < ApplicationController
 
     def update #patch "/prompts/:id"
         if current_user.prompts.include?(@prompt)
-            @propmt&.update!(prompt_params)
+            @prompt&.update!(prompt_params)
             render json: serialized_prompt
         else
             no_route
         end
         # else
-        #     render json: {error: @post.errors.full_messages.to_sentence}
+        #     render json: {error: @prompt.errors.full_messages.to_sentence}
         # end
     end
 
-    # def destroy #delete "/prompts/:id" # I have this here but I don't want prompts to be deleted right now because any user can write stories for a prompt
-    #     if current_user.propmts.include?(@prompt)
+    # I have this here but I don't want prompts to be deleted right now because any user can write stories for a prompt
+    
+    # def destroy #delete "/prompts/:id"
+    #     if current_user.prompts.include?(@prompt)
     #         if @prompt&.destroy
     #             render json: {message: "Successfully deleted prompt!"}
     #         else
-    #             render json: {error: @post.errors.full_messages.to_sentence}
+    #             render json: {error: @prompt.errors.full_messages.to_sentence}
     #         end
     #     else
     #         no_route
