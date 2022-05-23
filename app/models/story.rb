@@ -4,6 +4,6 @@ class Story < ApplicationRecord
   belongs_to :user
 
   #validations
-  validates :story_title, :story_body, presence: true
-  validates :story_body, length: {in: (1..5000)}
+  validates :story_title, presence: true
+  validates :story_body, presence: true, length: {in: (1..5000)}
 end
