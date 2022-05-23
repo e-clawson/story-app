@@ -1,4 +1,4 @@
-import { MessageContext } from "./context/message";
+import { MessageContext } from "../context/message";
 import { useContext, useEffect, useState } from "react";
 
 const Notification = () => {

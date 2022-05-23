@@ -38,12 +38,12 @@ export default function SignIn() {
     password: ""
   });
 
-  const handleChange = ({target: {name, value}}) => {
-    setUserObj({
-        ...userObj,
-        [name]: value
-    })
-}
+    const handleChange = ({target: {name, value}}) => {
+      setUserObj({
+          ...userObj,
+          [name]: value
+      })
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -78,6 +78,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               value={userObj.email}
+              onChange={handleChange}
               autoFocus
               
             />
@@ -112,7 +113,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

@@ -1,10 +1,10 @@
 import {useState, useContext} from 'react'
 import { useHistory } from 'react-router-dom'
-import { UserContext } from "./context/user.js"
-import { MessageContext } from './context/message.js'
+import { UserContext } from "../../context/user.js"
+import { MessageContext } from '../../context/message.js'
 
 const Login = () => {
-    const {setUser, login} = useContext(UserContext);
+    const {login} = useContext(UserContext);
     const {setMessage} = useContext(MessageContext); 
 
     const [userObj, setUserObj] = useState({
@@ -32,11 +32,11 @@ const Login = () => {
     <>
         <h3>Login</h3>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Email</label>
-            <input onChange={handleChange} type="text" name="email" value={userObj.email}/><br />
+            <label htmlFor="email">Email</label>
+            <input onChange={handleChange} type="text" name="email" value={userObj.email} required/><br />
             <label htmlFor="password">Password</label>
-            <input onChange={handleChange} type="password" name="password" value={userObj.password}/><br />
-            <input type="submit" value="login" />
+            <input onChange={handleChange} type="password" name="password" value={userObj.password} required/><br />
+            <input type="submit" value="Login" />
         </form>
     </>
   )

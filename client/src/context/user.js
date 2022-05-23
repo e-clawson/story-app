@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useContext, useCallback, useEffect } from "react";
 import {useHistory} from "react-router-dom"
 import {MessageContext} from "./message"
 
@@ -11,16 +11,17 @@ function UserProvider({children}) {
     const {setMessage} = useContext(MessageContext)
 
     const getCurrentUser = useCallback(async () => {  
-            const resp = await fetch( "/me")
-             if (resp.status === 200) {
+            const resp = await fetch( baseUrl )
+             if ( resp.status === 200) {
                  const data = await resp.json()
                  setUser(data)
              } else {
-                setMessage("error")
+                const errorObj = await resp.json()
+                setMessage(errorObj.error)
             }
     }, [setMessage])
 
-    const login = async(userInfo) => { 
+    const login = async (userInfo) => { 
            try{
             const resp = await fetch("" + baseUrl + "/login", {
                 method: "POST",
@@ -30,16 +31,14 @@ function UserProvider({children}) {
                 }, 
                 body: JSON.stringify(userInfo)
            })
-           if (resp.status === 202) {
+            if (resp.status === 202) {
                 const data = await resp.json()
-                debugger
                 setUser(data)
                 history.push("/profile")
-           } else {
+            } else {
                const errorObj = await resp.json()
                setMessage(errorObj.error)
-           }
-
+            }
         } catch(e) {
                 setMessage(e.message)
             }
@@ -57,7 +56,6 @@ function UserProvider({children}) {
            })
            if (resp.status === 201) {
                 const data = await resp.json()
-                debugger
                 setUser(data)
                 history.push("/profile")
            } else {
@@ -75,20 +73,15 @@ function UserProvider({children}) {
             const resp = await fetch("" + baseUrl + "/logout", {
                 method: "DELETE", 
             })
-            if (resp.status === 204) {
-                setUser(null)
-                history.push("/")
-            } else {
-                const errorObj = await resp.json()
-                setMessage(errorObj.error)
-            }
+             setUser(null)
+             history.push("/login")
         } catch(e) {
             setMessage(e.message)
         }
     }
 
     return (
-        <UserContext.Provider value={{user, setUser, getCurrentUser, login, signup, logout }}>
+        <UserContext.Provider value={{user, setUser, getCurrentUser, login, signup, logout}}>
             {children}
         </UserContext.Provider>
     )

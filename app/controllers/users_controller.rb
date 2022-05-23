@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     render json: UserSerializer.new(user), status: :created
   end
 
-  def show 
+  def show #"/me"
     render json: UserSerializer.new(@current_user), status: :ok
   end
 

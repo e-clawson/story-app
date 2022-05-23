@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 import { BrowserRouter } from "react-router-dom";
 // import { createGlobalStyle } from "styled-components";
-import {UserProvider} from './components/context/user';
-import {MessageProvider} from './components/context/message';
+import {UserProvider} from '../src/context/user';
+import { MessageProvider } from "../src/context/message";
 
 // const GlobalStyle = createGlobalStyle`
 //   *,
@@ -24,11 +24,11 @@ import {MessageProvider} from './components/context/message';
 
 ReactDOM.render(
   <BrowserRouter>
-    <MessageProvider>
-      <UserProvider>
-        <App />
-     </UserProvider>
-    </MessageProvider>
+      <MessageProvider>
+        <UserProvider>
+          <App />
+        </UserProvider>
+      </MessageProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );

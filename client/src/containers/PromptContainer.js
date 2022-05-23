@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react"
 import PromptList from "../components/Prompts/PromptList.js"
-import { PromptFilter } from "../components/Prompts/PromptFilter";
+
 
 const PromptContainer = () => {
     const [prompts, setPrompts] = useState([]);
 
     useEffect(() => {
-        fetch("/api/v1/prompts")
+        fetch("http://localhost:3000/api/v1/prompts")
         .then(r => r.json())
-        .then(data => setPrompts(data.data.map(p => p.attributes)))
+        .then(data => setPrompts(data))
         .catch(err => alert(err))  
     }, []);
 

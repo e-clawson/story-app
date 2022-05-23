@@ -1,5 +1,4 @@
-class StorySerializer < ActiveModel::Serializer
-  attributes :id
-  has_one :prompt
-  has_one :user
+class StorySerializer #< ActiveModel::Serializer
+    include JSONAPI::Serializer
+ 
 end

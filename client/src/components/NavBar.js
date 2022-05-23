@@ -2,19 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles";
-import { UserContext } from "./context/user";
+import { UserContext } from "../context/user";
 
-
-function NavBar() {
-  const {user, setUser} = useContext(UserContext)
-
-  function handleLogoutClick() {
-    fetch("/api/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-      }
-    });
-  }
+const NavBar = () => {
+  const {user} = useContext(UserContext)
 
   return (
    <>
@@ -32,28 +23,31 @@ function NavBar() {
         </Button>
         {user ? (
           <>
-          <Button as={Link} to="/new">
-            New Short Story Prompt
-          </Button>
-          <Button as={Link} to="/profile">
-            My Profile
-          </Button>
-          <Button variant="outline" onClick={handleLogoutClick}>
-            Logout
-          </Button>
+            <Button as={Link} to="/new">
+              New Short Story Prompt
+            </Button>
+            <Button as={Link} to="/profile">
+              My Profile
+            </Button>
+            {/* <Button variant="outline" onClick={handleLogoutClick}>
+              Logout
+            </Button> */}
           </>
           ) : (
             <>
-            <Button as={Link} to="/login">
-            Login or Signup
-            </Button>
+              <Button as={Link} to="/login">
+              Login
+              </Button>
+              <Button as={Link} to="/signup">
+              Signup
+              </Button>
             </>
           )
         }
       </Nav>
       </Wrapper>
     </>
-  );
+  )
 }
 
 const Wrapper = styled.header`

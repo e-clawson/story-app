@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :stories
   scope :api do
     scope :v1 do
-      get "/prompts", to: "prompts#index"
+      # get "/ordered-prompts", to: "propmts#ordered"
+      # get "/most-stories", to: "posts#most_stories"
+      # # post "/auth/:provider/callback", to: "sessions#omniauth"
 
       resources :users, only: [:update, :destroy]
       post "/signup", to: "users#create"
@@ -10,22 +12,13 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
       
-      # resources :stories
+      # get "/stories", to: "stories#index"
+      resources :stories, only: [:index]
+
+      resources :prompts do
+        # resources :prompts, only: [:index, :create]
+        resources :prompts, shallow: true
+      end
     end
   end
-
-  # namespace :api do
-  #   resources :recipes, only: [:index, :create]
-  #   post "/signup", to: "users#create"
-  #   get "/me", to: "users#show"
-  #   post "/login", to: "sessions#create"
-  #   delete "/logout", to: "sessions#destroy"
-  # end
-  # all other routes will be load our React application
-  # this route definition matches:
-  # - *path: all paths not matched by one of the routes defined above
-  # - constraints:
-  #   - !req.xhr?: it's not a XHR (fetch) request
-  #   - req.format.html?: it's a request for a HTML document
-  # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
