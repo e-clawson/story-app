@@ -1,3 +1,7 @@
+import { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { MessageContext } from '../../context/message';
+import { UserContext } from '../../context/user';
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -12,10 +16,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { UserContext } from './context/user';
-import { useContext, useState } from 'react';
-import { MessageContext } from '../../context/message';
-import { useHistory } from 'react-router-dom';
 
 function Copyright(props) {
     return (
@@ -32,7 +32,7 @@ function Copyright(props) {
 
   const theme = createTheme();
 
-const Signup = () => {
+  const Signup = () => {
     const {signup} = useContext(UserContext);
     const {setMessage} = useContext(MessageContext);
   
@@ -56,15 +56,14 @@ const Signup = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    if([userObj.email, userObj.password, userObj.username, userObj.first_name, userObj.last_name, userObj.passwordConfirmation].some(val => val.trim() === "")){
+    if([userObj.email, userObj.password, userObj.username, userObj.first_name, userObj.last_name, userObj.passwordConfirmation].some(val => val.trim() === "")) {
       setMessage({messagge: "You must fill in all fields", color: "red"})
     }
     const onSuccess = signup({...userObj, password_confirmation: userObj.passwordConfirmation})
     if (onSuccess) {
       setMessage({message: "New User Successfully Created!", color: "green"})
       history.push("/profile")
-    }
-    
+    } 
   }
 
   return (
@@ -178,8 +177,8 @@ const Signup = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/signin" variant="body2">
-                  Already have an account? Sign in
+                <Link href="/login" variant="body2">
+                  Already have an account? Log in
                 </Link>
               </Grid>
             </Grid>
@@ -188,6 +187,7 @@ const Signup = () => {
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
-);
-
+  );
 }
+
+export default Signup

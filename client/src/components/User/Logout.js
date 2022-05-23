@@ -1,5 +1,5 @@
 import {useEffect, useContext} from 'react'
-import {UserContext} from 'import { UserContext } from "../../context/user.js'
+import {UserContext} from '../../context/user.js'
 import {useHistory} from 'react-router-dom'
 
 function Logout() {

@@ -12,6 +12,7 @@ import Profile from "./User/Profile";
 import PromptContainer from "../containers/PromptContainer";
 import PromptCard from "./Prompts/PromptCard";
 import { MessageContext } from "../context/message";
+import Signup2 from "./User/Signup2";
 
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
@@ -31,7 +32,7 @@ function App() {
               <About /> 
             </Route>
             <Route path="/login">
-             <Login2 /> 
+             {/* <Login2 />  */}
             </Route>
             <Route path="/logout">
               {/* <Logout />  */}
@@ -39,8 +40,8 @@ function App() {
             <Route path="/profile">
               {/* <Profile />  */}
             </Route>
-            <Route path="/new">
-              {/* <Signup /> */}
+            <Route path="/signup">
+              <Signup2 />
             </Route>
             <Route path="/">
               <Home />
