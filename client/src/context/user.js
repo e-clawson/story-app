@@ -70,13 +70,16 @@ function UserProvider({children}) {
 
     const logout = async() => {
         try {
-            const resp = await fetch("" + baseUrl + "/logout", {
+            const resp = await fetch("api/v1/logout", {
                 method: "DELETE", 
             })
+             setMessage("You were successfully logged out")
              setUser(null)
-             history.push("/login")
+             return true
+            //  history.push("/login")
         } catch(e) {
             setMessage(e.message)
+            return false
         }
     }
 
