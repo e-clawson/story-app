@@ -2,9 +2,13 @@ class PromptsController < ApplicationController
     skip_before_action :authorized!, only: [:index]
     before_action :find_prompt, only: [:show, :update, :destroy]
 
-    def index #get "/prompts"
+    def index #get "/prompts" this one returns { data: []}
         render json: PromptSerializer.new(Prompt.preload(:stories)).serializable_hash
     end
+
+    # def index #this one gives me "[]"
+    #     render json: Prompt.all
+    # end
 
     # def ordered
     #     render json: Post.sort_desc_by_title
@@ -20,11 +24,11 @@ class PromptsController < ApplicationController
 
     def create #post "/prompts" "users/17/prompts" "users/99/prompts"
         @prompt = current_user.prompts.create!(prompt_params)
-        if @prompt.id
+        #if @prompt.id
         render json: serialized_prompt, status: 201
-        else
-            render json: {error: @prompt.errors.full_messages.to_sentence}
-        end
+        # else
+        #     render json: {error: @prompt.errors.full_messages.to_sentence}
+        # end
     end
 
     def update #patch "/prompts/:id"
@@ -39,8 +43,8 @@ class PromptsController < ApplicationController
         # end
     end
 
-    # def destroy #delete "/prompts/:id"
-    #     if current_user.propmts.include?(@propmt)
+    # def destroy #delete "/prompts/:id" # I have this here but I don't want prompts to be deleted right now because any user can write stories for a prompt
+    #     if current_user.propmts.include?(@prompt)
     #         if @prompt&.destroy
     #             render json: {message: "Successfully deleted prompt!"}
     #         else

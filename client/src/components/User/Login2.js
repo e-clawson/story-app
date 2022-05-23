@@ -33,25 +33,30 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-)
+
 export default function SignIn() {
-  const {login} = useContext(UserContext);
+  const {login, user, setUser} = useContext(UserContext);
+  const {setMessage} = useContext(MessageContext);
+  const history = useHistory()
   const [userObj, setUserObj] = useState({
-    email: "",
-    password: ""
+      email: "",
+      password: ""
   });
 
-    const handleChange = ({target: {name, value}}) => {
+  const handleChange = ({target: {name, value}}) => {
       setUserObj({
           ...userObj,
           [name]: value
       })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    login(userObj)
-  };
+    const success = await login(userObj)
+    if (success) {
+        history.push("/profile")
+    }
+};
 
   return (
     <ThemeProvider theme={theme}>
