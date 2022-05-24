@@ -1,7 +1,7 @@
 import StoryCard from "./StoryCard.js"
 
 const StoryList = ({stories}) => {
- const storyCards = stories?.map(story => <StoryCard key={prompt.id} story={story}/>)
+ const storyCards = stories?.map(story => <StoryCard key={story.id} story={story}/>)
     
  return (
     <div>

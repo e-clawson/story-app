@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
+import { Button, Input, FormField, Label } from "../../styles";
 
 const PromptForm = () => {
   const [prompt, setPrompt] = useState({
@@ -22,13 +23,14 @@ const PromptForm = () => {
       if ([prompt.promptTitle, prompt.promptBody].some(val => val.trim() === "")) {
         alert("Please provide all the requested information")
       }
+      history.push("/home")
 
   const newPrompt = {
-      title: prompt.promptTitle,
-      title: prompt.promptBody,
+      prompt_title: prompt.promptTitle,
+      prompt_body: prompt.promptBody,
   }
 
-  fetch("/prompts", {
+  fetch("api/v1/prompts", {
     method: "POST", 
     headers: {
         "Content-Type": "application/json",
@@ -41,12 +43,31 @@ const PromptForm = () => {
   return (
     <>
       <h3>Add A New Story Prompt!</h3>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="title"> Title</label>
-          <input onChange={handleChange} type="text" name="title" value={prompt.promptTitle} required/> <br />
-          <label htmlFor="instrumentation"> Prompt Body</label>
-          <input onChange={handleChange} type="text" name="body" value={prompt.promptBody} required/> <br />  
-        </form>
+      <form onSubmit={handleSubmit}>
+      <FormField>
+        <Label htmlFor="promptTitle">Prompt Title</Label>
+        <Input
+          type="text"
+          name="promptTitle"
+          autoComplete="off"
+          value={setPrompt.promptTitle}
+          onChange={handleChange}
+        />
+         </FormField>
+         <FormField>
+        <Label htmlFor="promptBody">Prompt Body</Label>
+        <Input
+          type="text"
+          name="promptBody"
+          autoComplete="off"
+          value={setPrompt.promptBody}
+          onChange={handleChange}
+        />
+         </FormField>
+      <FormField>
+        <Button type="submit">Submit Prompt</Button>
+      </FormField>
+    </form>
     </>
   )
 }
