@@ -7,6 +7,10 @@ const PromptCard = ({prompt}) => {
             <h2>Title: {prompt.prompt_title}</h2>
             <h4>Body: {prompt.prompt_body}</h4>
             <button>Favorite 💖</button>
+
+            {/* <h2>Story Title {prompt.stories.data.}</h2> */}
+
+
         </div>
     )
 }

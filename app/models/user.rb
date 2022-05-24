@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     #associations 
     has_many :stories
-    # has_many :prompts, through: :stories
+    has_many :prompts, through: :stories
 
     #password protection - password_digest
     has_secure_password
