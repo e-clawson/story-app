@@ -1,8 +1,8 @@
-import React, { useState, useContext, useCallback, useEffect } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import {useHistory} from "react-router-dom"
 import {MessageContext} from "./message"
 
-const baseUrl = "http://localhost:3000/api/v1"
+// const baseUrl = "http://localhost:3000/api/v1"
 const UserContext = React.createContext()
 
 function UserProvider({children}) {
@@ -11,7 +11,7 @@ function UserProvider({children}) {
     const {setMessage} = useContext(MessageContext)
 
     const getCurrentUser = useCallback(async () => {  
-            const resp = await fetch( baseUrl )
+            const resp = await fetch( "/api/v1/me" )
              if ( resp.status === 200) {
                  const data = await resp.json()
                  setUser(data)
@@ -23,7 +23,7 @@ function UserProvider({children}) {
 
     const login = async (userInfo) => { 
            try{
-            const resp = await fetch("" + baseUrl + "/login", {
+            const resp = await fetch("/api/v1/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", 
@@ -46,7 +46,7 @@ function UserProvider({children}) {
 
     const signup = async(userInfo) => { 
         try{
-            const resp = await fetch("" + baseUrl + "/login", {
+            const resp = await fetch("/api/v1/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", 

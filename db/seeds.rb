@@ -20,3 +20,6 @@ angel = User.create(username: "Angel", first_name: "Angel", last_name: "Robiou",
 caitlin = User.create(username: "CWBakes", first_name: "Caitlin", last_name: "Baker", password:"123456", email: "cwbaker80@gmail.com")
 laksh = User.create(username: "LakshK3", first_name: "Laksh", last_name: "Khurana", password:"123456", email: "lakshkhurana3@gmail.com")
 aiden = User.create(username: "Pandora's Bra", first_name: "Aiden", last_name: "Baker", password:"123456", email: "aiden@gmail.com")
+
+story1 = Story.create(prompt_id: 7, user_id:3, story_title: "Boris the Spider's Day Off", story_body: "lsdiuvfbnadwoiufncopgirucoiwmjdxpoihfcgniluthblsivjmxoz" )
+

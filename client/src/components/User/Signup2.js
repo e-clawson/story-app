@@ -7,8 +7,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -37,11 +37,11 @@ function Copyright(props) {
     const {setMessage} = useContext(MessageContext);
   
     const [userObj, setUserObj] = useState({
-      email: "", 
-      password: "",
       username: "", 
       first_name: "", 
       last_name: "", 
+      email: "", 
+      password: "",
       passwordConfirmation: ""
     }); 
 
@@ -56,11 +56,11 @@ function Copyright(props) {
 
   const handleSubmit = e => {
     e.preventDefault()
-    if([userObj.email, userObj.password, userObj.username, userObj.first_name, userObj.last_name, userObj.passwordConfirmation].some(val => val.trim() === "")) {
+    if([userObj.username, userObj.first_name, userObj.last_name, userObj.email, userObj.password, userObj.passwordConfirmation].some(val => val.trim() === "")) {
       setMessage({messagge: "You must fill in all fields", color: "red"})
     }
-    const onSuccess = signup({...userObj, password_confirmation: userObj.passwordConfirmation})
-    if (onSuccess) {
+    const success = signup({...userObj, password_confirmation: userObj.passwordConfirmation})
+    if (success) {
       setMessage({message: "New User Successfully Created!", color: "green"})
       history.push("/profile")
     } 
@@ -158,12 +158,6 @@ function Copyright(props) {
                   autoComplete="new-password"
                   onChange={handleChange}
                   value={userObj.passwordConfirmation}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
                 />
               </Grid>
             </Grid>

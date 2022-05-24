@@ -5,15 +5,16 @@ import { Redirect } from 'react-router-dom';
 
 const Profile = () => {
     const {user} = useContext(UserContext)
-    if (!user) return <Redirect to="/login" />
+    console.log(user)
+    if (!user?.data) return <Redirect to="/login" />
   
     return (
     <div> 
-        <h1>{user.username} Profile</h1>
+        <h1>Hello, {user.data.attributes.username}!</h1>
         <h2> User Information: </h2> <br />
-        <h3> First Name:  {user.first_name}</h3> 
-        <h3> Last Name:  {user.last_name}</h3> <br />
-        <h3> Prompts: </h3> <br />
+        <h3> First Name:  {user.data.attributes.first_name}</h3> 
+        <h3> Last Name:  {user.data.attributes.last_name}</h3> <br />
+        <h3> Prompts: {user.data.attributes.prompts} </h3> <br />
 
       
     </div>

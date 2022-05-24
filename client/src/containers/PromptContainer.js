@@ -6,9 +6,9 @@ const PromptContainer = () => {
     const [prompts, setPrompts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/v1/prompts")
+        fetch("/api/v1/prompts")
         .then(r => r.json())
-        .then(data => setPrompts(data))
+        .then(data => setPrompts(data.data.map(p => p.attributes)))
         .catch(err => alert(err))  
     }, []);
 
