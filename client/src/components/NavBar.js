@@ -24,7 +24,7 @@ const NavBar = () => {
         {user ? (
           <>
             <Button as={Link} to="/new">
-              New Short Story Prompt
+              New Prompt
             </Button>
             <Button as={Link} to="/profile">
               My Profile

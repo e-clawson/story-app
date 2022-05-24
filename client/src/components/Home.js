@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PromptContainer from "../containers/PromptContainer";
+import StoryContainer from "../containers/StoryContainer";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
         <h2>Homepage</h2>
       </Wrapper>
       <PromptContainer/>
+      <StoryContainer/>
   
       
     </div>

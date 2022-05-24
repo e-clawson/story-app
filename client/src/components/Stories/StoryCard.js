@@ -1,7 +1,7 @@
 import "./Story.css"
 
 const StoryCard = ({story}) => {
-
+    console.log(story)
     return (
         <div className= "story-card">
             <h2>Title: {story.story_title}</h2>

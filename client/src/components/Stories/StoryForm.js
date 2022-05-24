@@ -5,33 +5,30 @@ const StoryForm = () => {
   const [story, setStory] = useState({
       storyTitle: "",
       storyBody: "", 
+      
   });
 
   const history = useHistory()
 
   const handleChange = (e) => {
-      setMusic({
-          ...music,
+      setStory({
+          ...story,
           [e.target.name]: e.target.value
       })
   }
 
   const handleSubmit = e => {
       e.preventDefault()
-      if ([music.title, music.instrumentation, music.composerFirstName, music.composerLastName, music.yearComposed, music.length].some(val => val.trim() === "")) {
+      if ([story.storyTitle, story.storyBody].some(val => val.trim() === "")) {
         alert("Please provide all the requested information")
       }
 
-  const newMusic = {
-      title: music.title,
-      instrumentation: music.instrumentation,
-      composer_first_name: music.composerFirstName,
-      composer_last_name: music.composerLastName,
-      year_composed: music.yearComposed,
-      length: music.length
+  const newStory = {
+      title: story.storyTitle,
+      title: story.storyBody,
   }
 
-  fetch("/musics", {
+  fetch("/", {
     method: "POST", 
     headers: {
         "Content-Type": "application/json",
