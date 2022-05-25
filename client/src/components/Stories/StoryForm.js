@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
+import { Button, Input, FormField, Label } from "../../styles";
 
 const StoryForm = () => {
   const [story, setStory] = useState({
@@ -22,42 +23,54 @@ const StoryForm = () => {
       if ([story.storyTitle, story.storyBody].some(val => val.trim() === "")) {
         alert("Please provide all the requested information")
       }
+      history.push("/home")
 
   const newStory = {
-      title: story.storyTitle,
-      title: story.storyBody,
+      story_title: story.storyTitle,
+      story_body: story.storyBody,
   }
 
-  fetch("/", {
+  fetch("api/v1/stories", {
     method: "POST", 
     headers: {
         "Content-Type": "application/json",
     },
-    body: JSON.stringify(newMusic) 
+    body: JSON.stringify(newStory) 
   })
   
 }
 
   return (
     <>
-      <h3>Add New Music</h3>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="title"> Title</label>
-          <input onChange={handleChange} type="text" name="title" value={music.title} required/> <br />
-          <label htmlFor="instrumentation"> Instrumentation</label>
-          <input onChange={handleChange} type="text" name="instrumentation" value={music.instrumentation} required/> <br />  
-          <label htmlFor="composerFirstName"> Composer First Name</label>
-          <input onChange={handleChange} type="text"  name="composerFirstName" value={music.composerFirstName} required/> <br />
-          <label htmlFor="composerLastName"> Composer Last Name</label>
-          <input onChange={handleChange} type="text"  name="composerLastName" value={music.composerLastName} required/> <br />
-          <label htmlFor="yearComposed"> Year Composed (input as number - ex: 1962)</label>
-          <input onChange={handleChange} type="number" name="yearComposed" value={music.yearComposed} required/> <br />
-          <label htmlFor="length"> Length (please input like so: example "5 minutes")</label>
-          <input onChange={handleChange} type="text" name="length" value={music.length} required/> <br />
-          <input type="submit" value="Add Music" />
-        </form>
+      <h3>Add A New Story!</h3>
+      <form onSubmit={handleSubmit}>
+      <FormField>
+        <Label htmlFor="storyTitle">Story Title</Label>
+        <Input
+          type="text"
+          name="storyTitle"
+          autoComplete="off"
+          value={setStory.StoryTitle}
+          onChange={handleChange}
+        />
+         </FormField>
+         <FormField>
+        <Label htmlFor="storyBody">Story Body</Label>
+        <h4>(Story can be between 1 - 5000 characters)</h4>
+        <Input
+          type="text"
+          name="storyBody"
+          autoComplete="off"
+          value={setStory.storyBody}
+          onChange={handleChange}
+        />
+         </FormField>
+      <FormField>
+        <Button type="submit">Submit Story 📚</Button>
+      </FormField>
+    </form>
     </>
   )
 }
 
-export default MusicForm;
+export default StoryForm;

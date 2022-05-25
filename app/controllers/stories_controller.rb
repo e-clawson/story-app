@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
         if params[:prompt_id] #is there a route parameter? AKA do I come from a nested route?
             prompt = Prompt.find(params[:prompt_id])
             render json: prompt.stories
-        else # get "/comments"
+        else # get "/stories"
             render json: StorySerializer.new(Story.all).serializable_hash
         end
     end
@@ -15,15 +15,13 @@ class StoriesController < ApplicationController
         render json: serialized_story
     end
 
-    def create #post "/stories" #post "prompts/:prompt_id/stories"
-        if params[:prompt_id]
-            prompt = Prompt.find(params[:prompt_id])
-            @story = prompt.stories.create!(story_params)
-        #if @story.id
-            render json: serialized_story, status: 201
-        else
-            render json: {error: @story.errors.full_messages.to_sentence}
-        end
+    def create #post "/stories" "users/17/stories
+        @story = current_user.stories.create!(story_params)
+        #if @prompt.id
+        render json: serialized_story, status: 201
+        # else
+        #     render json: {error: @prompt.errors.full_messages.to_sentence}
+        # end
     end
 
     def update #patch "/stories/:id"
@@ -58,6 +56,6 @@ class StoriesController < ApplicationController
         end
     
         def story_params
-            params.require(:story).permit(:story_title, :story_body, :user_id, :prompt_id)
+            params.permit(:story_title, :story_body, :user_id, :prompt_id)
         end
 end

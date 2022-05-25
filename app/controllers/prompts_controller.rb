@@ -70,6 +70,6 @@ class PromptsController < ApplicationController
     end
 
     def prompt_params
-        params.require(:prompt).permit(:prompt_title, :prompt_body)
+        params.permit(:prompt_title, :prompt_body)
     end
 end

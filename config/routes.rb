@@ -12,12 +12,11 @@ Rails.application.routes.draw do
       delete "/logout", to: "sessions#destroy"
       
       # get "/stories", to: "stories#index"
-      resources :stories, only: [:index]
+      resources :stories, only: [:index, :create]
 
-      resources :prompts do
-        # resources :prompts, only: [:index, :create]
-        resources :stories, shallow: true
-      end
+      
+      resources :prompts, only: [:index, :create]
+        # resources :stories, shallow: true
     end
   end
 end
