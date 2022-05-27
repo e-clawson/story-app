@@ -6,20 +6,6 @@ class PromptsController < ApplicationController
         render json: PromptSerializer.new(Prompt.preload(:stories)).serializable_hash
     end
 
-    # def index #this one gives me "[]"
-    #     render json: Prompt.all
-    # end
-
-    # I don't need these yet but might need them later
-
-    # def ordered
-    #     render json: Post.sort_desc_by_title
-    # end
-
-    # def most_stories
-    #     render json: Prompt.most_stories
-    # end
-
     def show #get "/prompts/:id"
         render json: serialized_prompt
     end

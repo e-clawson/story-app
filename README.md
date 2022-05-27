@@ -4,7 +4,9 @@ The idea for AnthologyApp came from my own creative process as a musician and ar
 
 AntholgyApp is a place where users can see a list of short story prompts collected from all of the users of the app. Users can browse these, and can write their own short story as a response to a story prompt, and see other people's responses to that prompt too. Users can also create their own short story prompts to share with the world! 
 
-To view a technical blog post I wrote about the app please follow this link: 
+To view a blog post I wrote about the app please follow this link: 
+
+https://medium.com/@emclawson1/all-about-mvc-model-view-controller-9c87d88b64e0
 
 To view a video walkthough of the app, please follow this link: 
 
