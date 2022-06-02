@@ -16,6 +16,7 @@ import Profile from "./User/Profile";
 import SignUpForm from "./User/SignUpForm";
 import PromptForm from "./Prompts/PromptForm";
 import StoryForm from "./Stories/StoryForm";
+import DeleteUser from "./User/DeleteUser";
 
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
@@ -45,6 +46,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignUpForm />
+            </Route>
+            <Route path="/delete">
+              <DeleteUser />
             </Route>
             <Route path="/newprompt">
               <PromptForm />

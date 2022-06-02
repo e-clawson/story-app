@@ -35,6 +35,9 @@ const NavBar = () => {
             <Button as={Link} to="/logout">
               Logout
             </Button>
+            <Button as={Link} to="/delete">
+              Delete Account 
+              </Button>
           </>
           ) : (
             <>
@@ -57,17 +60,18 @@ const Wrapper = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
+  padding: 6px;
 `;
 
 const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
+  font-family: "Goudy Bookletter 1911", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 8px;
   font-size: 3rem;
-  color: deeppink;
+  color: Green;
+  background-color: lightgray;
   margin: 0;
   line-height: 1;
 

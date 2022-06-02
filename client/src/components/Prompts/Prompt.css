@@ -1,8 +1,8 @@
 
 .prompt-card{
     border: solid;
-    border-radius: 6px;
+    border-radius: 10px;
     width: 20%;
     margin: auto;
-    background-color: azure;
+    background-color: #f2eecb;
 }

@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 const COLORS = {
   primary: {
-    "--main": "indigo",
-    "--accent": "white",
+    "--main": "LightBlue",
+    "--accent": "gray",
   },
   secondary: {
-    "--main": "lavenderblush",
+    "--main": "LightGreen",
     "--accent": "indigo",
   },
 };
@@ -36,7 +36,7 @@ const FillButton = styled(ButtonBase)`
   color: var(--accent);
 
   &:hover {
-    opacity: 0.9;
+    opacity: 0.7;
   }
 `;
 

@@ -4,6 +4,7 @@ const About = () => {
     return (
       <div>
         <Wrapper>
+          <header></header>
         <h1>About AnthologyApp</h1>
         </Wrapper>
         <Wrapper>

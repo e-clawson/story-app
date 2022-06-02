@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Textarea = styled.textarea`
+  font-family: American Typewriter, serif;
   border-radius: 6px;
   border: 1px solid transparent;
   border-color: #dbdbdb;

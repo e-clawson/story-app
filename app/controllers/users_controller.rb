@@ -11,6 +11,18 @@ class UsersController < ApplicationController
     render json: UserSerializer.new(@current_user), status: :ok
   end
 
+  def destroy #"/delete"
+    if @current_user
+      if @current_user&.destroy
+          render json: {message: "User Successfully Destroyed"}
+      else
+          render json: {error: @post.errors.full_messages.to_sentence}
+      end
+    else
+      no_route
+    end
+  end
+
   private
 
   def user_params

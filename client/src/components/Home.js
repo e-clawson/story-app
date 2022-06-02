@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PromptContainer from "../containers/PromptContainer";
 import StoryContainer from "../containers/StoryContainer";
 
+
 const Home = () => {
   return (
     <div> 
