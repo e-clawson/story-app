@@ -1,7 +1,7 @@
-import PromptCard from "./PromptCard.js"
+import PromptCard2 from "./PromptCard2"
 
 const PromptList = ({prompts}) => {
- const promptCards = prompts.map(prompt => <PromptCard key={prompt.id} prompt={prompt}/>)
+ const promptCards = prompts.map(prompt => <PromptCard2 key={prompt.id} prompt={prompt}/>)
     
  return (
     <div>

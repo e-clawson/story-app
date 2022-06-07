@@ -15,7 +15,7 @@ const StoryContainer = () => {
   return (
     <>
         <h2>Story List</h2>
-        {/* <StoryList stories={stories} /> */}
+        <StoryList />
     </>
 
   )

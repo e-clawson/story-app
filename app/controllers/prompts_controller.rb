@@ -2,7 +2,7 @@ class PromptsController < ApplicationController
     skip_before_action :authorized!, only: [:index]
     before_action :find_prompt, only: [:show, :update, :destroy]
 
-    def index #get "/prompts" this one returns { data: []}
+    def index #get "/prompts" 
         render json: PromptSerializer.new(Prompt.preload(:stories)).serializable_hash
     end
 
@@ -56,6 +56,6 @@ class PromptsController < ApplicationController
     end
 
     def prompt_params
-        params.permit(:prompt_title, :prompt_body)
+        params.require(:propmt).permit(:prompt_title, :prompt_body)
     end
 end

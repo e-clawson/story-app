@@ -8,15 +8,16 @@ const StoryList = ({stories, handleError}) => {
     
     useEffect(() => {
         if (!stories) {
-            fetch(`http://localhost:4000/prompts/${promptId}/stories`)
+            fetch(`http://localhost:4000/api/v1/prompts/${promptId}/stories`)
             .then(resp => {
                 if (resp.status === 200) {
                     resp.json()
                     .then(stories => setStoryList(stories))
-                } else {
-                    resp.json()
-                    .then(errorObj => handleError(errorObj.error))
-                }
+                } 
+                // else {
+                //     resp.json()
+                //     .then(errorObj => handleError(errorObj.error))
+                // }
             })
             .catch(error => handleError(error))
         }
