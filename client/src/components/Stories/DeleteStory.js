@@ -1,13 +1,13 @@
 import {  useState } from "react";
 import { MessageContext } from "../../context/message";
-import { useHistory, useParams } from "react-router-dom";
-import { UserContext } from "../../context/user";
+import { useHistory } from "react-router-dom";
+
 
 const DeleteStory = () => {
-    const [story, setStory] = useState([])
+    const [story, setStory] = useState([]);
     const {setMessage} = useContext(MessageContext);
     const history = useHistory()
-    
+
     useEffect(() => {
         fetch(`http://localhost:4000/api/v1/stories/${story.id}`, {
            method: "DELETE",

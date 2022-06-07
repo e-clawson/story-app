@@ -18,6 +18,8 @@ import PromptForm from "./Prompts/PromptForm";
 import StoryForm from "./Stories/StoryForm";
 import DeleteUser from "./User/DeleteUser";
 import PromptCard2 from "./Prompts/PromptCard2";
+import StoryList from "./Stories/StoryList";
+import PromptContainer from "../containers/PromptContainer";
 
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
@@ -36,30 +38,47 @@ function App() {
             <Route path="/about">
               <About /> 
             </Route>
+
             <Route path="/login">
              <Login /> 
             </Route>
+
             <Route path="/logout">
               <Logout /> 
             </Route>
+
             <Route path="/profile">
               <Profile /> 
             </Route>
+
             <Route path="/signup">
               <SignUpForm />
             </Route>
+
             <Route path="/delete">
               <DeleteUser />
             </Route>
-            <Route path="/newprompt">
+
+            <Route path="/prompts/new">
               <PromptForm />
             </Route>
-            <Route path="/newstory">
+
+            <Route path="/stories/new">
               <StoryForm />
+              </Route>
+
+            <Route path="/prompts/:promptId/stories">
+            <StoryList />
+            </Route>
+
             <Route path="/prompts/:id">
             <PromptCard2 />
-          </Route>
             </Route>
+
+            <Route path="/prompts">
+            <PromptContainer />
+            </Route>
+
             <Route path="/">
               <Home />
             </Route>

@@ -2,13 +2,12 @@ import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Button, Input, FormField, Label } from "../../styles";
 
-const PromptForm = () => {
+const PromptForm = ({handleError}) => {
   const [prompt, setPrompt] = useState({
       promptTitle: "",
-      promptBody: "", 
-      
+      promptBody: ""
   });
-
+  
   const history = useHistory()
 
   const handleChange = (e) => {
@@ -25,21 +24,22 @@ const PromptForm = () => {
       }
       history.push("/home")
 
-  const newPrompt = {
-      prompt_title: prompt.promptTitle,
-      prompt_body: prompt.promptBody,
+  fetch("http://localhost:4000/api/v1/prompts", {
+      method: "POST", 
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({title: prompt.promptTitle, body: prompt.promptBody}) 
+    })
+    .then((resp) => {
+      if (resp.status === 201) {
+         history.push("/home")
+      } else {
+     resp.json().then(errorObj => handleError(errorObj.error))
+    }
+    })
+    .catch(err => handleError(err.message))
   }
-
-  fetch("api/v1/prompts", {
-    method: "POST", 
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newPrompt) 
-  })
-  
-}
-
   return (
     <>
       <h3>Add A New Story Prompt!</h3>
@@ -71,5 +71,4 @@ const PromptForm = () => {
     </>
   )
 }
-
-export default PromptForm;
+export default PromptForm

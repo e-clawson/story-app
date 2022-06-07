@@ -23,10 +23,10 @@ const NavBar = () => {
         </Button>
         {user ? (
           <>
-            <Button as={Link} to="/newprompt">
+            <Button as={Link} to="/prompts/new">
               New Prompt
             </Button>
-            <Button as={Link} to="/newstory">
+            <Button as={Link} to="/stories/new">
               New Story
             </Button>
             <Button as={Link} to="/profile">

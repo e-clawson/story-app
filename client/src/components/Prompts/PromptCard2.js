@@ -31,11 +31,11 @@ const PromptCard2 = ({prompt, handleError}) => {
     //   e.preventDefault()
       setEditMode(false)
       setPromptObj(updatedPromptObj)
-
     }
+
     const handleClick = (e) => { 
       if (e.target.name === "delete") {
-        fetch(`http://localhost:4000/prompts/${promptObj.id}`, 
+        fetch(`http://localhost:4000/api/v1/prompts/${promptObj.id}`, 
         {    method: "DELETE"})
         .then(() => history.push("/prompts"))
       } else {
@@ -49,8 +49,8 @@ const PromptCard2 = ({prompt, handleError}) => {
 return (
     <div>
       {!editMode ? <>
-        <h3>Title: <Link to={`/prompts/${finalPrompt.id}`}>{finalPrompt.title}</Link></h3>
-        <h4>Content: {location.pathname !== "/prompts" ? finalPrompt.content : `${finalPrompt.content.slice(0, 20)}...`}</h4>
+        <h3>Prompt Title: <Link to={`ap1/v1/prompts/${finalPrompt.id}`}>{finalPrompt.promptTitle}</Link></h3>
+        <h4>Prompt Body: {finalPrompt.promptBody}</h4>
         {location.pathname !== "/prompts" ? <>
           <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
           <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
