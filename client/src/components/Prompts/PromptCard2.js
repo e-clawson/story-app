@@ -14,7 +14,7 @@ const PromptCard2 = ({prompt, handleError}) => {
     
     useEffect(() => {   
         if (!prompt) {
-            fetch(`https://localhost:4000/api/v1/prompts/${prompt.prompt_id}`)
+            fetch(`https://localhost:4000/api/v1/prompts/${id}`)
             .then(resp => resp.json())
             .then(prompt => {
               setPromptObj(prompt)
@@ -48,8 +48,8 @@ const PromptCard2 = ({prompt, handleError}) => {
   
 return (
     <div>
-        <h3>Prompt Title: <Link to={`ap1/v1/prompts/${finalPrompt.id}`}>{finalPrompt.promptTitle}</Link></h3>
-        <h4>Prompt Body: {finalPrompt.promptBody}</h4>
+        <h3>Prompt Title: <Link to={`ap1/v1/prompts/${finalPrompt.id}`}>{finalPrompt.prompt_title}</Link></h3>
+        <h4>Prompt Body: {finalPrompt.prompt_body}</h4>
         {location.pathname !== "/prompts" ? (<>
           <StoryForm addNewStory={addNewStory} promptId={finalPrompt.id} />
           <br />

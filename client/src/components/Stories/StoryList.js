@@ -23,8 +23,10 @@ const StoryList = ({stories, handleError}) => {
         }
     }, [promptId, stories, handleError])
 
+    if (!stories) return <h2>There are no stories for this prompt!</h2>
     const finalStoryList = stories ? stories : storyList
     const renderStories = finalStoryList?.map(story => <StoryCard key={story.id} story={story}/>)
+    
     return (
         <div style = {{display:'flex', flexWrap:'wrap'}}>{renderStories}</div>
     )

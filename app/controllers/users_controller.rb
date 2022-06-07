@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     render json: UserSerializer.new(@current_user), status: :ok
   end
 
+  def index #"
+    user = @current_user
+    user.stories
+    
+  end
+
   def destroy #"/delete"
     if @current_user
       if @current_user&.destroy

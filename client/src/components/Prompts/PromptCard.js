@@ -8,7 +8,7 @@ import EditPrompt from './EditPrompt'
 const PromptCard = ({prompt, story}) => {
     return (
         <div className= "prompt-card">
-            <h2>Title: <Link to={`http://localhost:4000/api/v1/prompts/${prompt.prompt_id}`}>{prompt.prompt_title}</Link> </h2>
+            <h2>Title: <Link to={`http://localhost:4000/api/v1/prompts/${propmt.prompt_id}`}>{prompt.prompt_title}</Link> </h2>
             <h4>Prompt Body: {prompt.prompt_body}</h4>
             {/* <button>Favorite 💖</button> */}
         </div>

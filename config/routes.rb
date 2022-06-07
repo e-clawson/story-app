@@ -12,9 +12,10 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
       delete "/delete", to: "users#destroy"
+      get "/user/:id/stories", to: "users#index"
       
       resources :stories, only: [:index]
-      # "/posts/:id/comments"
+      
       get "/prompts/:id/stories", to: "stories#index"
       resources :prompts, only: [:index, :create]
       get "/prompts/:id", to: "prompts#show"
