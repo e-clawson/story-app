@@ -22,11 +22,10 @@ const StoryList = ({stories, handleError}) => {
         }
     }, [promptId, stories, handleError])
 
-    // if (!comments) return <h2>The data you tried to access does not exist!</h2>
     const finalStoryList = stories ? stories : storyList
     const renderStories = finalStoryList?.map(story => <StoryCard key={story.id} story={story}/>)
     return (
-        <div>{renderStories}</div>
+        <div style = {{display:'flex', flexWrap:'wrap'}}>{renderStories}</div>
     )
 }
 

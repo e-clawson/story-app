@@ -8,7 +8,7 @@ const StoryCard = ({story}) => {
 
     useEffect(() => {
         if (!story) {
-            fetch(`http://localhost:4000/stories/${id}`)
+            fetch(`http://localhost:4000/api/v1/stories/${id}`)
             .then(resp => resp.json())
             .then(story => setStoryObj(story))
         }

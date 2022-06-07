@@ -51,8 +51,8 @@ const StoryForm = ({promptId, addNewStory}) => {
             setStory({storyTitle: "", storyBody: ""})
         })
     }
-})
-.catch(err => alert(err))
+  })
+  .catch(err => alert(err))
 }
 
   return (

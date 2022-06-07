@@ -16,10 +16,10 @@ const EditStory = ({storyObj, handleUpdate, handleError}) => {
     const handleSubmit = e => {
         e.preventDefault()
         if ([story.storyTitle, story.storyBody].some(val => val.trim() === "")) {
-            alert("You must fill in all the information")
+            alert("Please include all the requested information!")
         }
 
-       fetch(`http://localhost:4000/prompts/${storyObj.id}`, {
+       fetch(`http://localhost:4000/api/v1/prompts/${storyObj.id}`, {
            method: "PATCH",
            headers: {
                "Content-Type": "application/json"
@@ -53,4 +53,4 @@ const EditStory = ({storyObj, handleUpdate, handleError}) => {
     )
 }
 
-export default EditPostForm
+export default EditStory

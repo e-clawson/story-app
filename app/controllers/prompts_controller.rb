@@ -51,7 +51,7 @@ class PromptsController < ApplicationController
         @prompt = Prompt.find(params[:id])
     end
 
-    def serialized_post
+    def serialized_prompt
         @prompt.to_json(include: :stories)
     end
 
