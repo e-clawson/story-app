@@ -12,7 +12,6 @@ const Home = () => {
       </Wrapper>
       <PromptContainer/>
       <StoryContainer/>
-  
       
     </div>
   )

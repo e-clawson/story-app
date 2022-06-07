@@ -1,6 +1,6 @@
 class PromptSerializer #< ActiveModel::Serializer
   include JSONAPI::Serializer
-  attributes :prompt_title, :prompt_body, :id
+  attributes :prompt_title, :prompt_body, :id, :stories
   # has_many :stories, serializer: StorySerializer
 
   attribute :stories do |object|

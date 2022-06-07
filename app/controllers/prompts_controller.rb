@@ -7,7 +7,7 @@ class PromptsController < ApplicationController
     end
 
     def show #get "/prompts/:id"
-        render json: serialized_prompt, status: 201 
+        render json: serialized_prompt
     end
 
     def create #post "/prompts" "users/17/prompts" "users/99/prompts"

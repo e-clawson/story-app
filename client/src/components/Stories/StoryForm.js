@@ -2,14 +2,14 @@ import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Button, Input, FormField, Label } from "../../styles";
 
-const StoryForm = () => {
+const StoryForm = ({promptId, addNewStory}) => {
   const [story, setStory] = useState({
       storyTitle: "",
       storyBody: "", 
       
   });
 
-  const history = useHistory()
+  // const history = useHistory()
 
   const handleChange = (e) => {
       setStory({
@@ -23,21 +23,36 @@ const StoryForm = () => {
       if ([story.storyTitle, story.storyBody].some(val => val.trim() === "")) {
         alert("Please provide all the requested information")
       }
-      history.push("/home")
+  
 
-  const newStory = {
-      story_title: story.storyTitle,
-      story_body: story.storyBody,
-  }
+  // const newStory = {
+  //     story_title: story.storyTitle,
+  //     story_body: story.storyBody,
+  // }
 
-  fetch("api/v1/stories", {
+  fetch(`http://localhost:4000/prompts/${promptId}/stories`, {
     method: "POST", 
     headers: {
         "Content-Type": "application/json",
     },
-    body: JSON.stringify(newStory) 
+    body: JSON.stringify(story) 
   })
-  
+  .then(resp => {
+    if (resp.status === 201) {
+        resp.json()
+        .then(story => {
+            addNewStory(story)
+            setStory({storyTitle: "", storyBody: ""})
+        })
+      } else {
+        resp.json()
+        .then(errorObj => {
+            alert(errorObj.error)
+            setStory({storyTitle: "", storyBody: ""})
+        })
+    }
+})
+.catch(err => alert(err))
 }
 
   return (

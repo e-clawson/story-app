@@ -1,13 +1,45 @@
 import StoryCard from "./StoryCard.js"
+import {useParams} from "react-router-dom"
+import {useState, useEffect} from "react"
 
-const StoryList = ({stories}) => {
- const storyCards = stories?.map(story => <StoryCard key={story.id} story={story}/>)
+const StoryList = ({stories, handleError}) => {
+    const {promptId} = useParams()
+    const [storyList, setStoryList] = useState(null)
     
- return (
-    <div>
-      <div style = {{display:'flex', flexWrap:'wrap'}}>{storyCards}</div>
-    </div>
-  )
+    useEffect(() => {
+        if (!stories) {
+            fetch(`http://localhost:4000/prompts/${promptId}/stories`)
+            .then(resp => {
+                if (resp.status === 200) {
+                    resp.json()
+                    .then(stories => setStoryList(stories))
+                } else {
+                    resp.json()
+                    .then(errorObj => handleError(errorObj.error))
+                }
+            })
+            .catch(error => handleError(error))
+        }
+    }, [promptId, stories, handleError])
+
+    // if (!comments) return <h2>The data you tried to access does not exist!</h2>
+    const finalStoryList = stories ? stories : storyList
+    const renderStories = finalStoryList?.map(story => <StoryCard key={story.id} story={story}/>)
+    return (
+        <div>{renderStories}</div>
+    )
 }
 
-export default StoryList;
+export default StoryList
+
+// const StoryList = ({stories}) => {
+//  const storyCards = stories?.map(story => <StoryCard key={story.id} story={story}/>)
+    
+//  return (
+//     <div>
+//       <div style = {{display:'flex', flexWrap:'wrap'}}>{storyCards}</div>
+//     </div>
+//   )
+// }
+
+// export default StoryList;

@@ -17,6 +17,7 @@ import SignUpForm from "./User/SignUpForm";
 import PromptForm from "./Prompts/PromptForm";
 import StoryForm from "./Stories/StoryForm";
 import DeleteUser from "./User/DeleteUser";
+import PromptCard2 from "./Prompts/PromptCard2";
 
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
@@ -55,6 +56,9 @@ function App() {
             </Route>
             <Route path="/newstory">
               <StoryForm />
+            <Route path="/prompts/:id">
+            <PromptCard2 />
+          </Route>
             </Route>
             <Route path="/">
               <Home />

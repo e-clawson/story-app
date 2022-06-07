@@ -26,6 +26,9 @@ const NavBar = () => {
             <Button as={Link} to="/newprompt">
               New Prompt
             </Button>
+            <Button as={Link} to="/newstory">
+              New Story
+            </Button>
             <Button as={Link} to="/profile">
               My Profile
             </Button>
