@@ -13,6 +13,7 @@ const StoryCard = ({story}) => {
             .then(story => setStoryObj(story))
         }
     }, [story, id]);
+    console.log(story)
 
     const finalStory = story ? story : storyObj
     if (!finalStory) return <h1>Loading...</h1>

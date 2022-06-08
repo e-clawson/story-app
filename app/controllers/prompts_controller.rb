@@ -7,6 +7,7 @@ class PromptsController < ApplicationController
     end
 
     def show #get "/prompts/:id"
+        find_prompt
         render json: serialized_prompt
     end
 

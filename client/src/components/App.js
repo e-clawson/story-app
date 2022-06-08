@@ -18,8 +18,10 @@ import PromptForm from "./Prompts/PromptForm";
 import StoryForm from "./Stories/StoryForm";
 import DeleteUser from "./User/DeleteUser";
 import PromptCard2 from "./Prompts/PromptCard2";
+import PromptCard from "./Prompts/PromptCard";
 import StoryList from "./Stories/StoryList";
 import PromptContainer from "../containers/PromptContainer";
+import PromptPage from "./Prompts/PromptPage";
 
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
@@ -68,7 +70,7 @@ function App() {
               </Route>
 
             <Route path="/prompts/:promptId/stories">
-            <StoryList />
+            <PromptPage />
             </Route>
 
             <Route path="/prompts/:id">

@@ -2,10 +2,10 @@ import {useState, useEffect} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
 import StoryForm from "../Stories/StoryForm"
 import StoryList from "../Stories/StoryList"
-import EditPrompt from "../Prompts/EditPrompt"
+import EditStory from "../Stories/EditStory"
 
-const PromptCard2 = ({prompt, handleError}) => {
-    const {id} = useParams()
+const PromptPage = ({prompt, handleError}) => {
+    const {promptId} = useParams()
     const location = useLocation()
     const [promptObj, setPromptObj] = useState(null);
     const [editMode, setEditMode] = useState(false);
@@ -14,14 +14,14 @@ const PromptCard2 = ({prompt, handleError}) => {
     
     useEffect(() => {   
         if (!prompt) {
-            fetch(`https://localhost:4000/api/v1/prompts/${id}`)
+            fetch(`/api/v1/prompts/${promptId}`)
             .then(resp => resp.json())
             .then(prompt => {
               setPromptObj(prompt)
               setStories(prompt.stories)
             })
         }
-    }, [prompt, id]);
+    }, [prompt, promptId]);
 
     const addNewStory = (storyObj) => {
       setStories(currentStories => [storyObj, ...currentStories])
@@ -48,7 +48,7 @@ const PromptCard2 = ({prompt, handleError}) => {
   
 return (
     <div>
-        <h3>Prompt Title: <Link to={`/prompts/${finalPrompt.id}/stories`}>{finalPrompt.prompt_title}</Link></h3>
+        <h3>Prompt Title: {finalPrompt.prompt_title}</h3>
         <h4>Prompt Body: {finalPrompt.prompt_body}</h4>
         {location.pathname !== "/prompts" ? (<>
           <StoryForm addNewStory={addNewStory} promptId={finalPrompt.id} />
@@ -61,4 +61,4 @@ return (
   )
 }
 
-export default PromptCard2
+export default PromptPage
