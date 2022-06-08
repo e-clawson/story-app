@@ -63,19 +63,21 @@ return (
                 <h4>Prompt Body: {finalPrompt.prompt_body}</h4>
             </div>
         </Wrapper>
-        <div>
-            <StoryList stories={stories} />
-        </div>
+        <br />
         <Wrapper>
         <div>
+            <hr />
             {location.pathname !== "/prompts" ? (<>
             <StoryForm addNewStory={addNewStory} promptId={finalPrompt.id} />
             <br />
             <hr />
-            <hr />
             </>) : null }
         </div>
         </Wrapper>
+        <br />
+        <div>
+            <StoryList stories={stories} />
+        </div>
    </>
   )
 
