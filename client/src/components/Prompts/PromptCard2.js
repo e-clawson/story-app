@@ -53,6 +53,7 @@ return (
         <h4>Prompt Body: {finalPrompt.prompt_body}</h4>
     </div>
   )
+
 }
 
 export default PromptCard2

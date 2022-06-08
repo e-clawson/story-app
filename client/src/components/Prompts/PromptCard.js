@@ -36,6 +36,7 @@ const PromptCard = ({prompt, story}) => {
         </div>
       </>  
     )
+
 }
 
 export default PromptCard

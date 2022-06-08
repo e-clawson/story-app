@@ -3,6 +3,8 @@ import {Link, useParams, useLocation, useHistory} from "react-router-dom"
 import StoryForm from "../Stories/StoryForm"
 import StoryList from "../Stories/StoryList"
 import EditStory from "../Stories/EditStory"
+import styled from "styled-components";
+import "./Prompt.css"
 
 const PromptPage = ({prompt, handleError}) => {
     const {promptId} = useParams()
@@ -45,20 +47,38 @@ const PromptPage = ({prompt, handleError}) => {
 
     const finalPrompt = prompt ? prompt : promptObj
     if (!finalPrompt) return <h1>Loading...</h1>
+
+    const Wrapper = styled.header`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    `;
   
 return (
-    <div>
-        <h3>Prompt Title: {finalPrompt.prompt_title}</h3>
-        <h4>Prompt Body: {finalPrompt.prompt_body}</h4>
-        {location.pathname !== "/prompts" ? (<>
-          <StoryForm addNewStory={addNewStory} promptId={finalPrompt.id} />
-          <br />
-        <hr />
-        <hr />
-          <StoryList stories={stories} />
-        </>) : null }
-    </div>
+   <>
+        <Wrapper>
+            <div className= "prompt-card">
+                <h3>Prompt Title: {finalPrompt.prompt_title}</h3>
+                <h4>Prompt Body: {finalPrompt.prompt_body}</h4>
+            </div>
+        </Wrapper>
+        <div>
+            <StoryList stories={stories} />
+        </div>
+        <Wrapper>
+        <div>
+            {location.pathname !== "/prompts" ? (<>
+            <StoryForm addNewStory={addNewStory} promptId={finalPrompt.id} />
+            <br />
+            <hr />
+            <hr />
+            </>) : null }
+        </div>
+        </Wrapper>
+   </>
   )
+
 }
 
 export default PromptPage
