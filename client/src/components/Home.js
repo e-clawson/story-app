@@ -11,8 +11,6 @@ const Home = () => {
         <h2>Homepage</h2>
       </Wrapper>
       <PromptContainer/>
-      <StoryContainer/>
-      
     </div>
   )
 }

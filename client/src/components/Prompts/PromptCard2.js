@@ -1,3 +1,4 @@
+import "./Prompt.css"
 import {useState, useEffect} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
 import StoryForm from "../Stories/StoryForm"
@@ -47,16 +48,9 @@ const PromptCard2 = ({prompt, handleError}) => {
     if (!finalPrompt) return <h1>Loading...</h1>
   
 return (
-    <div>
+    <div className= "prompt-card">
         <h3>Prompt Title: <Link to={`/prompts/${finalPrompt.id}/stories`}>{finalPrompt.prompt_title}</Link></h3>
         <h4>Prompt Body: {finalPrompt.prompt_body}</h4>
-        {location.pathname !== "/prompts" ? (<>
-          <StoryForm addNewStory={addNewStory} promptId={finalPrompt.id} />
-          <br />
-        <hr />
-        <hr />
-          <StoryList stories={stories} />
-        </>) : null }
     </div>
   )
 }
