@@ -25,23 +25,25 @@ const StoryForm = ({promptId, addNewStory}) => {
       }
   
 
-  // const newStory = {
-  //     story_title: story.storyTitle,
-  //     story_body: story.storyBody,
-  // }
+  const newStory = {
+      story_title: story.storyTitle,
+      story_body: story.storyBody,
+  }
 
-  fetch(`http://localhost:4000/prompts/${promptId}/stories`, {
+  console.log(newStory)
+
+  fetch(`http://localhost:4000/api/v1/prompts/${promptId}/stories`, {
     method: "POST", 
     headers: {
         "Content-Type": "application/json",
     },
-    body: JSON.stringify(story) 
+    body: JSON.stringify(newStory) 
   })
   .then(resp => {
     if (resp.status === 201) {
         resp.json()
-        .then(story => {
-            addNewStory(story)
+        .then(newStory => {
+            addNewStory(newStory)
             setStory({storyTitle: "", storyBody: ""})
         })
       } else {
@@ -53,7 +55,7 @@ const StoryForm = ({promptId, addNewStory}) => {
     }
   })
   .catch(err => alert(err))
-}
+  };
 
   return (
     <>
@@ -65,7 +67,7 @@ const StoryForm = ({promptId, addNewStory}) => {
           type="text"
           name="storyTitle"
           autoComplete="off"
-          value={setStory.StoryTitle}
+          value={setStory.storyTitle}
           onChange={handleChange}
         />
          </FormField>
@@ -80,6 +82,7 @@ const StoryForm = ({promptId, addNewStory}) => {
           onChange={handleChange}
         />
          </FormField>
+
       <FormField>
         <Button type="submit">Submit Story 📚</Button>
       </FormField>

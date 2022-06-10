@@ -14,12 +14,16 @@ Rails.application.routes.draw do
       delete "/delete", to: "users#destroy"
       get "/user/:id/stories", to: "users#index"
       
-      resources :stories, only: [:index]
-      
+      resources :stories, only: [:index, :update, :create]
+      patch "/stories/:id", to: "stories#update"
       get "/prompts/:id/stories", to: "stories#index"
+      post "/prompts/:prompt_id/stories", to: "stories#create"
+
       resources :prompts, only: [:index, :create]
       get "/prompts/:id", to: "prompts#show"
-        resources :stories, shallow: true
+      post "/prompts/:id", to: "prompts#create"
+        # resources :stories, shallow: true
+     
     end
   end
 end

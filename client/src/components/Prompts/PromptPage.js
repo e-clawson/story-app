@@ -64,20 +64,18 @@ return (
             </div>
         </Wrapper>
         <br />
+        <div>
+            <StoryList stories={stories} />
+        </div>
         <Wrapper>
         <div>
             <hr />
             {location.pathname !== "/prompts" ? (<>
             <StoryForm addNewStory={addNewStory} promptId={finalPrompt.id} />
-            <br />
             <hr />
             </>) : null }
         </div>
         </Wrapper>
-        <br />
-        <div>
-            <StoryList stories={stories} />
-        </div>
    </>
   )
 

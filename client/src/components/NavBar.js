@@ -26,18 +26,15 @@ const NavBar = () => {
             <Button as={Link} to="/prompts/new">
               New Prompt
             </Button>
-            <Button as={Link} to="/stories/new">
-              New Story
-            </Button>
             <Button as={Link} to="/profile">
               My Profile
             </Button>
             <Button as={Link} to="/logout">
               Logout
             </Button>
-            <Button as={Link} to="/delete">
+            {/* <Button as={Link} to="/delete">
               Delete Account 
-              </Button>
+              </Button> */}
           </>
           ) : (
             <>

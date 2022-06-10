@@ -15,7 +15,7 @@ class StoriesController < ApplicationController
         render json: serialized_story
     end
 
-    def create #post "/stories" 
+    def create #post "prompts/:prompt_id/stories" 
         if params[:prompt_id]
             prompt = Prompt.find(params[:prompt_id])
             @story = current_user.stories.create!(story_params)

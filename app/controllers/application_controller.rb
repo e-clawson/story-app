@@ -23,5 +23,5 @@ class ApplicationController < ActionController::API
   def no_route
     render json: {error: "Not Authorized"}, status: :unauthorized unless session.include?(:user_id) 
   end
-  
+
 end

@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import { UserContext } from '../../context/user';
 // import { MessageContext } from '../../context/message';
 import { Redirect } from 'react-router-dom'; 
+import "./User.css"
 
 const Profile = () => {
     const {user} = useContext(UserContext)
@@ -9,13 +10,12 @@ const Profile = () => {
     if (!user?.data) return <Redirect to="/login" />
   
     return (
-    <div> 
-      
+    <div className= "user-card" > 
         <h1>Hello, {user.data.attributes.username}!</h1>
-        <h2> User Information: </h2> <br />
-        <h3> First Name:  {user.data.attributes.first_name}</h3> 
-        <h3> Last Name:  {user.data.attributes.last_name}</h3> <br />
-      
+        <h2> User Information: </h2>
+        <h3> Name:  {user.data.attributes.first_name} {user.data.attributes.last_name}</h3> 
+        <h3> Username:  {user.data.attributes.username}</h3> 
+        <h3> Email:  {user.data.attributes.email}</h3> 
     </div>
   )
 }

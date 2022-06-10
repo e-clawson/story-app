@@ -29,7 +29,7 @@ const PromptForm = ({handleError}) => {
       headers: {
           "Content-Type": "application/json",
       },
-      body: JSON.stringify({title: prompt.promptTitle, body: prompt.promptBody}) 
+      body: JSON.stringify({prompt:{prompt_title: prompt.promptTitle, prompt_body: prompt.promptBody}}) 
     })
     .then((resp) => {
       if (resp.status === 201) {

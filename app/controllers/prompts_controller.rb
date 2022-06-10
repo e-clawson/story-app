@@ -1,3 +1,4 @@
+
 class PromptsController < ApplicationController
     skip_before_action :authorized!, only: [:index]
     before_action :find_prompt, only: [:show, :update, :destroy]
@@ -11,10 +12,10 @@ class PromptsController < ApplicationController
         render json: serialized_prompt
     end
 
-    def create #post "/prompts" "users/17/prompts" "users/99/prompts"
+    def create #post 
         @prompt = current_user.prompts.create!(prompt_params)
         #if @prompt.id
-        render json: serialized_prompt, status: 201
+        render json: serialized_prompt, status: 200
         # else
         #     render json: {error: @prompt.errors.full_messages.to_sentence}
         # end
@@ -57,6 +58,6 @@ class PromptsController < ApplicationController
     end
 
     def prompt_params
-        params.require(:propmt).permit(:prompt_title, :prompt_body)
+        params.require(:prompt).permit(:prompt_title, :prompt_body)
     end
 end
