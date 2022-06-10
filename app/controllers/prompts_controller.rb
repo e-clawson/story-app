@@ -13,7 +13,8 @@ class PromptsController < ApplicationController
     end
 
     def create #post 
-        @prompt = current_user.prompts.create!(prompt_params)
+        user = User.find(params[:user_id])
+        @prompt = user.prompts.create!(prompt_params)
         #if @prompt.id
         render json: serialized_prompt, status: 200
         # else
