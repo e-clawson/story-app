@@ -22,7 +22,6 @@ const PromptForm = ({handleError}) => {
       if ([prompt.promptTitle, prompt.promptBody].some(val => val.trim() === "")) {
         alert("Please provide all the requested information")
       }
-      history.push("/home")
 
   fetch("http://localhost:4000/api/v1/prompts", {
       method: "POST", 

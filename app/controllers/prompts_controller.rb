@@ -1,4 +1,3 @@
-
 class PromptsController < ApplicationController
     skip_before_action :authorized!, only: [:index]
     before_action :find_prompt, only: [:show, :update, :destroy]

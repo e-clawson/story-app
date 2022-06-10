@@ -74,8 +74,9 @@ const StoryForm = ({promptId, addNewStory}) => {
          <FormField>
         <Label htmlFor="storyBody">Story Body</Label>
         <h4>(Story can be between 1 - 5000 characters)</h4>
-        <Input
+        <textarea
           type="text"
+          rows="12"
           name="storyBody"
           autoComplete="off"
           value={setStory.storyBody}
