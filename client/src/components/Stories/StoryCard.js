@@ -58,14 +58,7 @@ const StoryCard = ({story, handleError}) => {
             <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
             </> : null}
             </> : <EditStory handleError={handleError} storyObj={finalStory} handleUpdate={handleUpdate}/>}
-            <hr />
-            <hr />
             {location.pathname !== "/stories" ? (<>
-            <StoryForm addNewStory={addNewStory} storyId={finalStory.id} />
-            <br />
-            <hr />
-            <hr />
-            <StoryList />
             </>) : null } 
         </div>
     )
