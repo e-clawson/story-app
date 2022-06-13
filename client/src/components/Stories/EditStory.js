@@ -7,7 +7,7 @@ const EditStory = ({storyObj, handleUpdate, handleError}) => {
     });
 
     const handleChange = (e) => {
-        setPost({
+        setStory({
             ...story,
             [e.target.name]: e.target.value
         })
@@ -16,7 +16,7 @@ const EditStory = ({storyObj, handleUpdate, handleError}) => {
     const handleSubmit = e => {
         e.preventDefault()
         if ([story.storyTitle, story.storyBody].some(val => val.trim() === "")) {
-            alert("Please include all the requested information!")
+            alert("Please fill out all required story information!")
         }
 
        fetch(`http://localhost:4000/api/v1/prompts/${storyObj.id}`, {
@@ -47,7 +47,7 @@ const EditStory = ({storyObj, handleUpdate, handleError}) => {
                 <input onChange={handleChange} type="text" name="storyTitle" value={story.storyTitle} required/><br />
                 <label htmlFor="content">Content</label>
                 <input onChange={handleChange} type="text" name="storyBody" value={story.storyBody} required/><br />
-                <input type="submit" value="Update Post" />
+                <input type="submit" value="Edit Story" />
             </form>
         </>
     )

@@ -3,7 +3,6 @@ import {useState, useEffect} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
 import StoryForm from '../Stories/StoryForm'
 import StoryList from '../Stories/StoryList'
-import EditPrompt from './EditPrompt'
 import StoryCard from "../Stories/StoryCard"
 
 const PromptCard = ({prompt, story}) => {
