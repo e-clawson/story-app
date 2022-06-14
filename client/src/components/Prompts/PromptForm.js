@@ -41,8 +41,7 @@ const PromptForm = ({addNewPrompt}) => {
       if (resp.status === 201) {
         resp.json()
         .then(newPrompt => {
-            addNewPrompt(newPrompt)
-            setPrompt({promptTitle: "", promptBody: ""})
+            history.push("/home")
         })
       } else {
         resp.json()

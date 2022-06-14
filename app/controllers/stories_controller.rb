@@ -35,7 +35,7 @@ class StoriesController < ApplicationController
         #     no_route
         # end
         else
-            render json: {error: @post.errors.full_messages.to_sentence}
+            render json: {error: @post.errors.full_messages.to_sentence}, status: 400
         end
     end
 

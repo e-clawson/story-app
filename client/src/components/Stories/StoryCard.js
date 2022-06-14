@@ -1,9 +1,10 @@
 import "./Story.css"
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
 import EditStory from "./EditStory"
 import StoryList from "./StoryList"
 import StoryForm from "./StoryForm"
+import { UserContext } from "../../context/user"
 
 const StoryCard = ({story, handleError}) => {
     const {id} = useParams()
@@ -13,6 +14,7 @@ const StoryCard = ({story, handleError}) => {
     const [editMode, setEditMode] = useState(false);
     // const [stories, setStories] = useState([]);
     const history = useHistory()
+    const {user} = useContext(UserContext)
 
     useEffect(() => {
         if (!story) {
@@ -45,15 +47,16 @@ const StoryCard = ({story, handleError}) => {
         }
        }
 
-    const finalStory = story ? story : storyObj
+    const finalStory = storyObj ? storyObj : story
     if (!finalStory) return <h1>Loading...</h1>
+    
     return (
         <div className= "story-card">
          {!editMode ? <>
             <h2>Title: {finalStory.story_title}</h2>
             <h4>Body: {finalStory.story_body}</h4>
     
-            {location.pathname !== "/stories" ? <>
+            {location.pathname !== "/stories" && parseInt(user?.data.id) === finalStory.user_id ? <>
             <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
             <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
             </> : null}

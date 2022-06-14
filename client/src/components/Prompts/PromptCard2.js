@@ -29,9 +29,7 @@ const PromptCard2 = ({prompt, handleError}) => {
       setStories(currentStories => [storyObj, ...currentStories])
     }
 
-    const addNewPrompt = (promptObj) => {
-      setPrompts(currentPrompts => [promptObj, ...currentPrompts])
-    }
+    
 
     const handleUpdate = (updatedPromptObj) => {
     //   e.preventDefault()
