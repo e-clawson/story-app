@@ -9,6 +9,7 @@ const PromptCard2 = ({prompt, handleError}) => {
     const {id} = useParams()
     const location = useLocation()
     const [promptObj, setPromptObj] = useState(null);
+    const [prompts, setPrompts] = useState([]);
     const [editMode, setEditMode] = useState(false);
     const [stories, setStories] = useState([]);
     const history = useHistory()
@@ -26,6 +27,10 @@ const PromptCard2 = ({prompt, handleError}) => {
 
     const addNewStory = (storyObj) => {
       setStories(currentStories => [storyObj, ...currentStories])
+    }
+
+    const addNewPrompt = (promptObj) => {
+      setPrompts(currentPrompts => [promptObj, ...currentPrompts])
     }
 
     const handleUpdate = (updatedPromptObj) => {

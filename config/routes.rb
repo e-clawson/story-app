@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
       resources :prompts, only: [:index, :create]
       get "/prompts/:id", to: "prompts#show"
-      # post "/prompts", to: "prompts#create"
+      post "/prompts", to: "prompts#create"
         # resources :stories, shallow: true
      
     end

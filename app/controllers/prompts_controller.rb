@@ -11,11 +11,27 @@ class PromptsController < ApplicationController
         render json: serialized_prompt
     end
 
-    def create #post 
-        user = User.find(params[:user_id])
-        @prompt = user.prompts.create!(prompt_params)
-        render json: serialized_prompt, status: 200
-    end
+    # def create #post "/prompts"
+    #     user = User.find(params[:user_id])
+    #     @prompt = user.prompts.create!(prompt_params)
+    #     render json: serialized_prompt, status: 200
+    # end
+    # def create #post "prompts/:prompt_id/stories" 
+    #     if params[:user_id]
+    #         prompt = Prompt.find(params[:prompt_id])
+    #         @prompt = current_user.prompts.create!(story_params)
+    #         #if @prompt.id
+    #         render json: serialized_story, status: 201
+    #         # else
+    #         #     render json: {error: @prompt.errors.full_messages.to_sentence}
+    #         # end
+    #     end
+    # end
+
+    def create 
+        prompt = Prompt.create!(prompt_params)
+        render json: PromptSerializer.new(prompt), status: :created
+      end
 
     def update #patch "/prompts/:id"
         if current_user.prompts.include?(@prompt)
@@ -54,6 +70,6 @@ class PromptsController < ApplicationController
     end
 
     def prompt_params
-        params.require(:prompt).permit(:prompt_title, :prompt_body)
+        params.permit(:prompt_title, :prompt_body)
     end
 end
