@@ -12,12 +12,13 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
       delete "/delete", to: "users#destroy"
-      get "/user/:id/stories", to: "users#index"
+      get "/users/:id/stories", to: "users#index"
       
       resources :stories, only: [:index, :update, :create]
       patch "/stories/:id", to: "stories#update"
       get "/prompts/:id/stories", to: "stories#index"
       post "/prompts/:prompt_id/stories", to: "stories#create"
+      delete "stories/:id/", to: "stories#destroy"
 
       resources :prompts, only: [:index, :create]
       get "/prompts/:id", to: "prompts#show"

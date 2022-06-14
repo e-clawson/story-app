@@ -12,6 +12,7 @@ class StoriesController < ApplicationController
     end
 
     def show #get "/stories/:id"
+        @story = Stories.all
         render json: serialized_story
     end
 

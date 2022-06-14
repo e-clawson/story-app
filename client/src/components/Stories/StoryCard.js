@@ -37,7 +37,7 @@ const StoryCard = ({story, handleError}) => {
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
-          fetch(`http://localhost:4000/stories/${storyObj.id}`, {    method: "DELETE"
+          fetch(`http://localhost:4000/api/v1/stories/${story.id}`, {    method: "DELETE"
           })
           .then(() => history.push("/home"))
         } else {

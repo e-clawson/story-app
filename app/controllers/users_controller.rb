@@ -11,11 +11,21 @@ class UsersController < ApplicationController
     render json: UserSerializer.new(@current_user), status: :ok
   end
 
-  def index #"
-    user = @current_user
-    user.stories
+  # def index # "users/:id/stories"
+  #   @current_user = User.find_by_id(user_params)
+  #   @current_user.stories
+  #   render json: UserSerializer.new(@current_user), status: :ok 
     
-  end
+  # end
+
+  def index #get "users/:user_id/stories"
+    if params[:user_id] 
+      user = User.find(params[:user_id])
+      render json: User.stories
+    else
+      render json: {error: @post.errors.full_messages.to_sentence}
+    end
+end
 
   def destroy #"/delete"
     if @current_user

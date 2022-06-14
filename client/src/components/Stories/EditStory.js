@@ -30,14 +30,15 @@ const EditStory = ({storyObj, handleUpdate, handleError}) => {
             if (resp.status === 201) {
                 resp.json()
                 .then(data => handleUpdate(data))
-            } else {
-                resp.json()
-                .then(errorObj => handleError(errorObj.error))
-            }
+             } else {
+            resp.json()
+            .then(errorObj => {
+                alert(errorObj.error)
+                setStory({title: story.storyTitle , body: story.storyBody})
+            })
+        }
         })
-        .catch(err => handleError(err.message))
-       
-        
+        .catch(err => handleError(err.message))    
     }
     return (
         <>

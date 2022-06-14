@@ -11,9 +11,6 @@ const DeleteStory = () => {
     useEffect(() => {
         fetch(`http://localhost:4000/api/v1/stories/${story.id}`, {
            method: "DELETE",
-           headers: {
-               "Content-Type": "application/json"
-           },
         })
         .then(res => {
             if (res.status === 200)  {
@@ -30,7 +27,7 @@ const DeleteStory = () => {
                 .then(data => {
                     setStory(null)
                     setMessage({message: data.error, status: "Story Not Deleted!"})
-                    console.log("not deleted")
+                    console.log("story not deleted")
                 })
             }
         })

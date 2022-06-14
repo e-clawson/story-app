@@ -2,13 +2,13 @@ import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Button, Input, FormField, Label } from "../../styles";
 
-const PromptForm = ({promptId, addNewPrompt}) => {
+const PromptForm = ({promptId, addNewPrompt, handleError}) => {
   const [prompt, setPrompt] = useState({
       promptTitle: "",
       promptBody: ""
   });
   
-  // const history = useHistory()
+  const history = useHistory()
 
   const handleChange = (e) => {
       setPrompt({
@@ -39,17 +39,12 @@ const PromptForm = ({promptId, addNewPrompt}) => {
     })
     .then(resp => {
       if (resp.status === 201) {
-        addNewPrompt(newPrompt)
-         setPrompt({promptTitle: "", promptBody: ""})
+        history.push("/home")
       } else {
-      resp.json()
-      .then(errorObj => {
-          alert(errorObj.error)
-          setPrompt({promptTitle: "", promptBody: ""})
-      })
-  }
-})
-.catch(err => alert(err))
+        resp.json().then(errorObj => handleError(errorObj.error))
+      }
+    })
+  .catch(err => handleError(err.message))
 };
 
   return (

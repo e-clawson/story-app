@@ -14,11 +14,7 @@ class PromptsController < ApplicationController
     def create #post 
         user = User.find(params[:user_id])
         @prompt = user.prompts.create!(prompt_params)
-        #if @prompt.id
         render json: serialized_prompt, status: 200
-        # else
-        #     render json: {error: @prompt.errors.full_messages.to_sentence}
-        # end
     end
 
     def update #patch "/prompts/:id"
