@@ -10,6 +10,9 @@ const Home = () => {
       <Wrapper>
         <h2>Homepage</h2>
       </Wrapper>
+      <Wrapper>
+        <h3> Log in or Sign up to explore stories, and write your own stories and prompts!  </h3>
+      </Wrapper>
       <PromptContainer/>
     </div>
   )
