@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   scope :api do
     scope :v1 do
       # get "/ordered-prompts", to: "prompts#ordered"
-      # get "/most-stories", to: "posts#most_stories"
+      
       # post "/auth/:provider/callback", to: "sessions#omniauth"
-      # get "/prompts/:id", to: "prompts#show"
 
       resources :users, only: [:update, :destroy]
       post "/signup", to: "users#create"
@@ -23,7 +22,16 @@ Rails.application.routes.draw do
       resources :prompts, only: [:index, :create]
       get "/prompts/:id", to: "prompts#show"
       post "/prompts", to: "prompts#create"
-        # resources :stories, shallow: true
+        resources :stories
+          get "/most-stories", to: "prompts#most_stories"
+
+      #double-nested route
+      # resources :users, do
+      #   resources :prompts, do
+      #     resources :stories 
+      #   end
+      # end
+
      
     end
   end

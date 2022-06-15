@@ -11,22 +11,6 @@ class PromptsController < ApplicationController
         render json: serialized_prompt
     end
 
-    # def create #post "/prompts"
-    #     user = User.find(params[:user_id])
-    #     @prompt = user.prompts.create!(prompt_params)
-    #     render json: serialized_prompt, status: 200
-    # end
-    # def create #post "prompts/:prompt_id/stories" 
-    #     if params[:user_id]
-    #         prompt = Prompt.find(params[:prompt_id])
-    #         @prompt = current_user.prompts.create!(story_params)
-    #         #if @prompt.id
-    #         render json: serialized_story, status: 201
-    #         # else
-    #         #     render json: {error: @prompt.errors.full_messages.to_sentence}
-    #         # end
-    #     end
-    # end
 
     def create 
         prompt = Prompt.create!(prompt_params)
@@ -57,6 +41,18 @@ class PromptsController < ApplicationController
     #     else
     #         no_route
     #     end
+    # end
+
+    # def ordered
+    #     render json: Post.sort_desc_by_title
+    # end
+
+    def most_stories
+        render json: Prompt.most_stories
+    end
+
+    # def show #get "/posts/:id"
+    #     render json: serialized_post
     # end
 
     private
