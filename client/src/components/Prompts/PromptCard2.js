@@ -1,11 +1,12 @@
 import "./Prompt.css"
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
 import StoryForm from "../Stories/StoryForm"
 import StoryList from "../Stories/StoryList"
-
+import { UserContext } from "../../context/user"
 
 const PromptCard2 = ({prompt, handleError}) => {
+    const {user} = useContext(UserContext)
     const {id} = useParams()
     const location = useLocation()
     const [promptObj, setPromptObj] = useState(null);
@@ -52,7 +53,8 @@ const PromptCard2 = ({prompt, handleError}) => {
   
 return (
     <div className= "prompt-card">
-        <h3>Prompt Title: <Link to={`/prompts/${finalPrompt.id}/stories`}>{finalPrompt.prompt_title}</Link></h3>
+        <h3>Prompt Title: {user ? (
+        <Link to={`/prompts/${finalPrompt.id}/stories`}>{finalPrompt.prompt_title}</Link>) : (finalPrompt.prompt_title) }</h3>
         <h4>Prompt Body: {finalPrompt.prompt_body}</h4>
     </div>
   )
