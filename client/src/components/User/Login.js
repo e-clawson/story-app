@@ -27,7 +27,7 @@ const Login = () => {
             setMessage ("Please provide an email and password")
         }
         login(userObj)
-        history.push("/profile")
+        history.push("/home")
     }
     
   return (

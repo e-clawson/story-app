@@ -11,7 +11,6 @@ class PromptsController < ApplicationController
         render json: serialized_prompt
     end
 
-
     def create 
         prompt = Prompt.create!(prompt_params)
         render json: PromptSerializer.new(prompt), status: :created
