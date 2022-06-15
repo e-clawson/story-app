@@ -27,7 +27,7 @@ const PromptCard = ({prompt}) => {
     return (
       <>
         <div className= "prompt-card">
-            <h2>Title: {prompt.prompt_title} </h2>
+            <h2>Title: <Link to={`/prompts/${prompt.id}/stories`}>{prompt.prompt_title}</Link> </h2>
             <h4>Prompt Body: {prompt.prompt_body}</h4>
         </div>
       </>  

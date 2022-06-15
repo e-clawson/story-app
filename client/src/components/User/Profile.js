@@ -15,16 +15,18 @@ const Profile = () => {
     if (!user?.data) return <Redirect to="/login" />
 
     return (
-    <div className= "user-card" > 
+    <>
+     <div className= "user-card" > 
         <h1>Hello, {user.data.attributes.username}!</h1>
         <h2> User Information: </h2>
         <h3> Name:  {user.data.attributes.first_name} {user.data.attributes.last_name}</h3> 
         <h3> Username:  {user.data.attributes.username}</h3> 
         <h3> Email:  {user.data.attributes.email}</h3> 
-        <hr/>
-        {user.data.attributes.prompts.map(prompt => <PromptCard prompt={prompt} key={prompt.id} /> )}
-
-    </div>
+      </div>
+      <hr/>
+      <h2> Prompts I've Written Stories For: </h2>
+      {user.data.attributes.prompts.map(prompt => <PromptCard prompt={prompt} key={prompt.id} /> )}
+    </>
   )
 }
 
