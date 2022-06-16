@@ -1,31 +1,76 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
+import {Link, useParams, useLocation, useHistory} from "react-router-dom"
+import StoryForm from "../Stories/StoryForm"
+import StoryList from "../Stories/StoryList"
+import EditStory from "../Stories/EditStory"
+import styled from "styled-components";
+import "./Prompt.css"
 
-const PromptFilter = () => {
-    const [prompt, setPrompt] = useState([])
-
-   const onChange = (() => {
-        fetch(`/api/v1/prompts/${prompt}`)
-        .then(r => r.json()) 
-        .then(data => setPrompt(data.data.map(p => p.attributes))) 
-        .catch(err => alert(err))  
-    }, [prompt, setPrompt])
+const PromptFilter = ({prompt, handleError}) => {
+    const {prompt_title} = useParams()
+    const location = useLocation()
+    const [promptObj, setPromptObj] = useState(null);
+    const [editMode, setEditMode] = useState(false);
+    const [stories, setStories] = useState([]);
+    const history = useHistory()
     
+    useEffect(() => {   
+        if (!prompt) {
+            fetch(`/api/v1/search/${prompt_title}`)
+            .then(resp => resp.json())
+            .then(prompt => {
+              setPromptObj(prompt)
+              setStories(prompt.stories)
+            })
+        }
+    }, ([prompt, prompt_title]));
 
-    return (
+    const handleUpdate = (updatedPromptObj) => {
+    //   e.preventDefault()
+      setEditMode(false)
+      setPromptObj(updatedPromptObj)
+    }
+
+    const handleSearch = (e) => { 
+      if (e.target.name === "get") {
+        fetch(`http://localhost:4000/api/v1/prompts/${prompt_title}`)
+        .then(resp => resp.json())
+        .then(prompt => {
+          setPromptObj(prompt)
+          setStories(prompt.prompt_title)
+        })
+    }
+}, [prompt, promptId]);
+
+    const finalPrompt = prompt ? prompt : promptObj
+    if (!finalPrompt) return <h1>Loading...</h1>
+
+    const Wrapper = styled.header`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    `;
+  
+return (
+   <>
+         <Wrapper>
         <div>
-            <input type="text" placeholder="Search by Title"
-            onChange={e => onChange(e.target.value)}/>
+            <hr />
+            <SearchBar handleSearch={handleSearch} prompt_title={finalPrompt.prompt_title} />
+            <hr />
         </div>
-    )
-}
-export default PromptFilter;
+        </Wrapper>
+        <Wrapper>
+            <div className= "prompt-card">
+                <h3>Prompt Title: {finalPrompt.prompt_title}</h3>
+                <h4>Prompt Body: {finalPrompt.prompt_body}</h4>
+            </div>
+        </Wrapper>
+       
+   </>
+  )
 
-// export const VillagerFilter = ({handleSearch}) => {
-    
-//     return (
-//         <div>
-//             <input type="text" placeholder="Search Villagers"
-//             onChange={e => handleSearch(e.target.value)}/>
-//         </div>
-//     )
-// }
+}
+
+export default PromptFilter

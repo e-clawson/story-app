@@ -28,17 +28,17 @@ class PromptsController < ApplicationController
         # end
     end
 
-    def ordered_stories
-       prompt = find_prompt
-       ordered_stories = prompt.stories.order(:story_title)
-       render json: serialized_prompt
-    end
-
     def search 
         @prompt = Prompt.where("lower(prompt_title) LIKE (?)", "%#{params[:prompt_title].downcase}%")
         render json: @prompt
     end 
 
+        # def ordered_stories
+    #    prompt = find_prompt
+    #    ordered_stories = prompt.stories.order(:story_title)
+    #    render json: serialized_prompt
+    # end
+    
     # I have this here but I don't want prompts to be deleted right now because any user can write stories for a prompt
     
     # def destroy #delete "/prompts/:id"

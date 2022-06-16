@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PromptContainer from "../containers/PromptContainer";
 import PromptFilter from "./Prompts/PromptFilter";
+import SearchBar from "./Prompts/SearchBar";
 
 
 const Home = () => {
@@ -12,6 +13,9 @@ const Home = () => {
       </Wrapper>
       <Wrapper>
         <h3> Log in or Sign up to explore stories, and write your own stories and prompts!  </h3>
+      </Wrapper>
+      <Wrapper>
+      <PromptFilter/>
       </Wrapper>
       <PromptContainer/>
     </div>
