@@ -26,6 +26,8 @@ const PromptCard2 = ({prompt, handleError}) => {
         }
     }, [prompt, id]);
 
+
+
     const addNewStory = (storyObj) => {
       setStories(currentStories => [storyObj, ...currentStories])
     }

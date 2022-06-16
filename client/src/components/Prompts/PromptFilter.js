@@ -1,26 +1,31 @@
-import { useState } from "react"
-import {useParams} from "react-router-dom"
+import {useState} from "react"
 
 const PromptFilter = () => {
-    const [search, setSearch] = useState([])
+    const [prompt, setPrompt] = useState([])
 
-    const getSearchPrompt = () => {
-        fetch(`http://localhost:4000/api/v1/prompts/${search}`)
-        .then(resp => resp.json())
-        .then(search => setSearch(search))
-        console.log(search)
-    }
+   const onChange = (() => {
+        fetch(`/api/v1/prompts/${prompt}`)
+        .then(r => r.json()) 
+        .then(data => setPrompt(data.data.map(p => p.attributes))) 
+        .catch(err => alert(err))  
+    }, [prompt, setPrompt])
     
-    const handleSearch {
-
-
-    }
 
     return (
         <div>
             <input type="text" placeholder="Search by Title"
-            onChange={e => handleSearch(e.target.value)}/>
+            onChange={e => onChange(e.target.value)}/>
         </div>
     )
 }
 export default PromptFilter;
+
+// export const VillagerFilter = ({handleSearch}) => {
+    
+//     return (
+//         <div>
+//             <input type="text" placeholder="Search Villagers"
+//             onChange={e => handleSearch(e.target.value)}/>
+//         </div>
+//     )
+// }
