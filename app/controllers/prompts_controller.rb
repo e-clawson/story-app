@@ -1,5 +1,5 @@
 class PromptsController < ApplicationController
-    skip_before_action :authorized!, only: [:index]
+    skip_before_action :authorized!, only: [:index, :search]
     before_action :find_prompt, only: [:show, :update, :destroy]
 
     def index #get "/prompts" 
@@ -28,6 +28,17 @@ class PromptsController < ApplicationController
         # end
     end
 
+    def ordered_stories
+       prompt = find_prompt
+       ordered_stories = prompt.stories.order(:story_title)
+       render json: serialized_prompt
+    end
+
+    def search 
+        @prompt = Prompt.where("lower(prompt_title) LIKE (?)", "%#{params[:prompt_title].downcase}%")
+        render json: @prompt
+    end 
+
     # I have this here but I don't want prompts to be deleted right now because any user can write stories for a prompt
     
     # def destroy #delete "/prompts/:id"
@@ -46,9 +57,9 @@ class PromptsController < ApplicationController
     #     render json: Post.sort_desc_by_title
     # end
 
-    def most_stories
-        render json: Prompt.most_stories
-    end
+    # def most_stories
+    #     render json: Prompt.most_stories
+    # end
 
     # def show #get "/posts/:id"
     #     render json: serialized_post

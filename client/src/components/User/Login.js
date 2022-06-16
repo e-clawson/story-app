@@ -26,8 +26,10 @@ const Login = () => {
         if  ([userObj.email, userObj.password].some(val => val.trim() === "")){
             setMessage ("Please provide an email and password")
         }
-        login(userObj)
-        history.push("/home")
+        else {
+            login(userObj)
+        }
+        // history.push("/home")
     }
     
   return (

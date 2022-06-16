@@ -38,16 +38,6 @@ const PromptCard2 = ({prompt, handleError}) => {
       setPromptObj(updatedPromptObj)
     }
 
-    const handleClick = (e) => { 
-      if (e.target.name === "delete") {
-        fetch(`http://localhost:4000/api/v1/prompts/${promptObj.id}`, 
-        {    method: "DELETE"})
-        .then(() => history.push("/prompts"))
-      } else {
-        setEditMode(true)
-      }
-     }
-
     const finalPrompt = prompt ? prompt : promptObj
     if (!finalPrompt) return <h1>Loading...</h1>
   
