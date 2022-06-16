@@ -14,9 +14,6 @@ const Home = () => {
       <Wrapper>
         <h3> Log in or Sign up to explore stories, and write your own stories and prompts!  </h3>
       </Wrapper>
-      <Wrapper>
-      <SearchBar/>
-      </Wrapper>
       <PromptContainer/>
     </div>
   )

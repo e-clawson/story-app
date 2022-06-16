@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import PromptList from "../components/Prompts/PromptList.js"
+import SearchBar from "../components/Prompts/SearchBar.js";
 
 
-const PromptContainer = () => {
+const PromptContainer = ({prompt}) => {
     const [prompts, setPrompts] = useState([]);
 
     useEffect(() => {
@@ -14,8 +15,9 @@ const PromptContainer = () => {
 
   return (
     <>
+        <SearchBar />
         <h2>Prompt List</h2>
-        <PromptList prompts={prompts} />
+        <PromptList prompts={prompts} prompt={prompt}/>
     </>
 
   )

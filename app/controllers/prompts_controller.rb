@@ -29,8 +29,8 @@ class PromptsController < ApplicationController
     end
 
     def search 
-        pp params[:prompt_title]
-        @prompt = Prompt.where("lower(prompt_title) LIKE (?)", "%#{params[:prompt_title].downcase}%")
+        pp params[:q]
+        @prompt = Prompt.where("lower(prompt_title) LIKE (?)", "%#{params[:q]}%")
         render json: @prompt
     end 
 
