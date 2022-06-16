@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :prompts, only: [:index, :create]
       get "/prompts/:id", to: "prompts#show"
       post "/prompts", to: "prompts#create"
-      get "/search/:prompt_title", to: "prompts#search"
+      get "/search/", to: "prompts#search"
   
         resources :stories
           get "prompts/:id/ordered-stories", to: "prompts#ordered_stories"
