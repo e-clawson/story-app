@@ -3,8 +3,13 @@ import PromptList from "../components/Prompts/PromptList.js"
 import SearchBar from "../components/Prompts/SearchBar.js";
 
 
-const PromptContainer = ({prompt}) => {
+const PromptContainer = () => {
     const [prompts, setPrompts] = useState([]);
+    const [searchResult, setSearchResult] = useState([]);
+
+    const passSearchResult = (data) => {
+      setSearchResult(data);
+    };
 
     useEffect(() => {
         fetch("/api/v1/prompts")
@@ -15,9 +20,9 @@ const PromptContainer = ({prompt}) => {
 
   return (
     <>
-        <SearchBar />
+        <SearchBar passSearchResult={passSearchResult}/>
         <h2>Prompt List</h2>
-        <PromptList prompts={prompts} prompt={prompt}/>
+        <PromptList prompts={prompts} searchResult={searchResult} />
     </>
 
   )

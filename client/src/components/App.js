@@ -1,4 +1,4 @@
-import React, { useEffect, useContext,  } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Header from "./Header.js";
@@ -22,13 +22,16 @@ import PromptCard from "./Prompts/PromptCard";
 import StoryList from "./Stories/StoryList";
 import PromptContainer from "../containers/PromptContainer";
 import PromptPage from "./Prompts/PromptPage";
+import SearchBar from "./Prompts/SearchBar";
 
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
-  
+
+
   useEffect(() => {
         getCurrentUser()
   }, [])
+ 
 
   return (
     <div className="App">
