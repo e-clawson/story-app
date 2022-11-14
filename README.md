@@ -10,6 +10,7 @@ https://medium.com/@emclawson1/all-about-mvc-model-view-controller-9c87d88b64e0
 
 To view a video walkthough of the app, please follow this link: 
 
+https://www.youtube.com/watch?v=uRUkJ_4p5gw&feature=youtu.be
 
 ## Acknowledgements 
 
